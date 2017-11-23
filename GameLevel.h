@@ -8,7 +8,8 @@
 
 #include "Board.h"
 #include "ConsolePlayer.h"
-#include "ConsoleLogic.h"
+#include "GameLogic.h"
+#include "AIPlayer.h"
 
 class GameLevel {
 
@@ -19,6 +20,7 @@ private:
     Player* whitePlayer;
     Board* board;
     GameLogic* logic;
+    int playerChoice;
 
 
     /**
@@ -49,7 +51,7 @@ public:
 
 **/
 
-    GameLevel(Board &b);
+    GameLevel(Board &b, int playerChoice);
 
 
     /**
