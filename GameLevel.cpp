@@ -4,6 +4,7 @@
 //
 
 #include "GameLevel.h"
+#include "ConsoleLogic.h"
 
 
 GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),board(&b) , blackTurn(true) , whiteTurn(false) {
