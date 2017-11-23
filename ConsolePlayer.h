@@ -36,7 +36,7 @@ public:
 * makes one move at the play.
 **/
 
-    Point makeMove(vector<Point> possibleMoves);
+    Point makeMove(vector<Point> possibleMoves , Board &b);
 
 
     /**

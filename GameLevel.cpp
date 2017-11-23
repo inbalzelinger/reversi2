@@ -10,8 +10,8 @@
 GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),board(&b) , blackTurn(true) , whiteTurn(false) {
     this->blackPlayer = new ConsolePlayer('X');
     if(playerChoice==1){
-    this->whitePlayer = new ConsolePlayer('O');}
-    else if(playerChoice==2){
+    this->whitePlayer = new ConsolePlayer('O');
+    } else if(playerChoice==2){
         this->whitePlayer= new AIPlayer('O');
     }
     this->logic = new GameLogic(b);
@@ -90,13 +90,13 @@ void GameLevel::play() {
     while (this->points(*this->blackPlayer)!=0 && this->points(*this->whitePlayer)!=0) {
         optionsBlack = this->turn(this->blackPlayer->getSigh());
         if (!optionsBlack.empty()) {
-          p = blackPlayer->makeMove(optionsBlack);
+          p = blackPlayer->makeMove(optionsBlack ,  *this->board);
             this->board->addToBoard(p.getX() , p.getY() , blackPlayer->getSigh());
             this->board->upside(blackPlayer->getSigh() , p.getY() , p.getX());
         }
         optionsWhite = this->turn(this->whitePlayer->getSigh());
         if (!optionsWhite.empty()) {
-           p = whitePlayer->makeMove(optionsWhite);
+           p = whitePlayer->makeMove(optionsWhite , *this->board);
             this->board->addToBoard(p.getX() , p.getY() , whitePlayer->getSigh());
             this->board->upside(whitePlayer->getSigh() , p.getY() , p.getX());
         }

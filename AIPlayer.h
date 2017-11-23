@@ -6,6 +6,7 @@
 #define UNTITLED2_AIPLAYER_H
 
 #include "Player.h"
+#include "Board.h"
 
 class AIPlayer: public Player {
 
@@ -36,7 +37,7 @@ public:
 * makes one move at the play.
 **/
 
-    Point makeMove(vector<Point> possibleMoves);
+    Point makeMove(vector<Point> possibleMoves , Board &b);
 
 
     /**
