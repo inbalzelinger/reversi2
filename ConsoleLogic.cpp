@@ -3,10 +3,11 @@
 // ID: 311247340
 //
 
-#include "GameLogic.h"
+#include "ConsoleLogic.h"
 
 
 GameLogic::GameLogic(Board& b): board(&b) {}
+
 
 GameLogic::GameLogic(){}
 
@@ -105,7 +106,6 @@ vector<Point> GameLogic::PossibleMoves(char playerSigh) const {
                             }
                         }
                     }
-
                     //north east
                     counterCol = 0;
                     colForDiagnol = j + 1;
@@ -145,7 +145,6 @@ vector<Point> GameLogic::PossibleMoves(char playerSigh) const {
                         }
                     }
                     //north west
-
                     counterCol = 0;
                     colForDiagnol = j - 1;
                     for (int row = i - 1; row >= 0; row--) {
