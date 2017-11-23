@@ -6,9 +6,13 @@
 #include "GameLevel.h"
 
 
-GameLevel::GameLevel(Board &b): board(&b) , blackTurn(true) , whiteTurn(false) {
+GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),board(&b) , blackTurn(true) , whiteTurn(false) {
     this->blackPlayer = new ConsolePlayer('X');
-    this->whitePlayer = new ConsolePlayer('O');
+    if(playerChoice==1){
+    this->whitePlayer = new ConsolePlayer('O');}
+    else if(playerChoice==2){
+        this->whitePlayer= new AIPlayer('O');
+    }
     this->logic = new GameLogic(b);
 }
 
