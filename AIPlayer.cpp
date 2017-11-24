@@ -21,8 +21,13 @@ AIPlayer::AIPlayer(char currentPlayer) {
 
 
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
+    int numX = 0;
+    int numO = 0;
+    int maxNumZ = 0;
 
     Board imageneriBoard(b.getSize());
+    Board imageneriBoard2(b.getSize());
+
     ConsolePlayer imageneryOponent('X');
     vector<Point> imageneryOponentMoves;
     GameLogic logic(b);
@@ -30,32 +35,38 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     Point movePoint;
     int place = 0;
     int oponentPossibleScore = 0;
-
-
     for (int p = 0; p < possibleMoves.size() ; p++){
-
         imageneriBoard = b;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
         imageneryOponentMoves = logic.PossibleMoves('X');
 
-
-
         for (Point p1: imageneryOponentMoves) {
-            imageneriBoard.addToBoard(p1.getX() , p1.getY() , 'X');
-            imageneriBoard.upside('X' , p1.getY() , p1.getX());
+            imageneriBoard2 = imageneriBoard;
+
+            imageneriBoard2.addToBoard(p1.getX() , p1.getY() , 'X');
+            imageneriBoard2.upside('X' , p1.getY() , p1.getX());
             for (int i = 0; i < b.getSize() ; i++) {
                 for (int j = 0; j < b.getSize() ; j++) {
-                    if (imageneriBoard.getBoard()[i][j] == 'X') {
-                        oponentPossibleScore++;
+                    if (imageneriBoard2.getBoard()[i][j] == 'X') {
+                        numX++;
                     }
                 }
             }
-            if (oponentPossibleScore < minPossibleScore) {
-                ;
+            for (int i = 0; i < b.getSize() ; i++) {
+                for (int j = 0; j < b.getSize() ; j++) {
+                    if (imageneriBoard2.getBoard()[i][j] == 'O') {
+                        numO++;
+                    }
+                }
             }
+            if (numX - numO > maxNumZ) {
+                maxNumZ = numX - numO;
+            }
+            //add p to a map with maxNumZ;
         }
     }
+    //return the p with the min maxNumZ
     return Point(4 , 2);
 }
 
