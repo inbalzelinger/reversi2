@@ -42,28 +42,7 @@ int GameLevel::points(Player &p) {
 
 
 vector<Point> GameLevel::turn(char playerSigh) {
-    int j = 0;
-    int flag = 0;
-    vector<Point> playesOptions;
-    vector<Point> playesOptionsToCheck = this->logic->PossibleMoves(playerSigh);
-    if (playesOptions.empty() && !playesOptionsToCheck.empty()) {
-        playesOptions.push_back(playesOptionsToCheck[j]);
-        j++;
-    }
-    while (j < playesOptionsToCheck.size()) {
-        for (int i = 0; i < playesOptions.size(); i++) {
-            if (playesOptions[i] == (playesOptionsToCheck[j])) {
-                break;
-            } else {
-                flag++;
-            }
-        }
-        if (flag == playesOptions.size()) {
-            playesOptions.push_back(playesOptionsToCheck[j]);
-        }
-        flag = 0;
-        j++;
-    }
+    vector<Point> playesOptions = this->logic->PossibleMoves(playerSigh);;
     if (!playesOptions.empty()) {
         cout<<*this->board;
         cout << playerSigh <<" its your turn" << endl;
@@ -74,7 +53,6 @@ vector<Point> GameLevel::turn(char playerSigh) {
     } else {
         cout<<playerSigh<<":"<<"no possible moves for you"<<endl;
     }
-    playesOptionsToCheck.clear();
     return playesOptions;
 }
 

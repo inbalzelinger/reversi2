@@ -21,6 +21,7 @@ AIPlayer::AIPlayer(char currentPlayer) {
 
 
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
+
     Board imageneriBoard(b.getSize());
     ConsolePlayer imageneryOponent('X');
     vector<Point> imageneryOponentMoves;
