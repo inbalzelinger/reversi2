@@ -6,13 +6,13 @@
 #include "ConsoleLogic.h"
 
 
-GameLogic::GameLogic(Board& b): board(&b) {}
+ConsoleLogic::ConsoleLogic(Board& b): board(&b) {}
 
 
-GameLogic::GameLogic(){}
+ConsoleLogic::ConsoleLogic(){}
 
 
-vector<Point> GameLogic::PossibleMoves(char playerSigh) const {
+vector<Point> ConsoleLogic::PossibleMoves(char playerSigh) const {
     vector<Point> moves1;
     char otherPlayer;
     int counter = 0;

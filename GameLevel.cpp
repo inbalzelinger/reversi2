@@ -14,7 +14,7 @@ GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),boar
     } else if(playerChoice==2){
         this->whitePlayer= new AIPlayer('O');
     }
-    this->logic = new GameLogic(b);
+    this->logic = new ConsoleLogic(b);
 }
 
 
