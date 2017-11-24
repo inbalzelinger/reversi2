@@ -3,8 +3,8 @@
 // ID: 311247340
 //
 
-#ifndef UNTITLED2_GAMELOGIC_H
-#define UNTITLED2_GAMELOGIC_H
+#ifndef UNTITLED2_CONSOLELOGIC_H
+#define UNTITLED2_CONSOLELOGIC_H
 
 
 #include <vector>
@@ -12,18 +12,18 @@
 #include "Board.h"
 #include "Logic.h"
 
-class GameLogic : public Logic{
+class ConsoleLogic : public Logic{
 private:
     Board* board;
 
 public:
-    GameLogic(Board& b);
+    ConsoleLogic(Board& b);
 
-    GameLogic();
+    ConsoleLogic();
 
     vector<Point> PossibleMoves(char playerSigh) const;
 
 };
 
 
-#endif //UNTITLED2_GAMELOGIC_H
+#endif //UNTITLED2_CONSOLELOGIC_H

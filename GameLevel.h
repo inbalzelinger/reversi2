@@ -19,7 +19,7 @@ private:
     Player* blackPlayer;
     Player* whitePlayer;
     Board* board;
-    GameLogic* logic;
+    ConsoleLogic* logic;
     int playerChoice;
 
 
