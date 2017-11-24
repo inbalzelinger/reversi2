@@ -8,7 +8,7 @@
 
 Player::Player(char currentPlayer): sigh(currentPlayer) {}
 
-Player::Player():sigh(' '){}
+Player::Player():sigh('O'){}
 
 char Player::getSigh() {
     return this->sigh;
