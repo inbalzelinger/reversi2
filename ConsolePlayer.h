@@ -29,7 +29,7 @@ public:
 * function name: Player
 * defult constuctor.
 **/
-    ConsolePlayer(char currentPlayer);
+    explicit ConsolePlayer(char currentPlayer);
 
     /**
 * function name: makeMove

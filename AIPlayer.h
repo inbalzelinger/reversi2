@@ -30,7 +30,7 @@ public:
 * function name: Player
 * defult constuctor.
 **/
-    AIPlayer(char currentPlayer);
+    explicit AIPlayer(char currentPlayer);
 
     /**
 * function name: makeMove

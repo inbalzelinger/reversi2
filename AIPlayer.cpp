@@ -11,7 +11,7 @@
 
 
 AIPlayer::AIPlayer() {
-    this->sigh = 'O';
+    this->sigh = ' ';
 }
 
 AIPlayer::AIPlayer(char currentPlayer) {
@@ -31,14 +31,16 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     int place = 0;
     int oponentPossibleScore = 0;
 
+
     for (int p = 0; p < possibleMoves.size() ; p++){
 
-        Point movePoint(possibleMoves[p].getX() , possibleMoves[p].getY());
-
         imageneriBoard = b;
-        imageneriBoard.addToBoard(movePoint.getX() , movePoint.getY() , this->sigh);
-        imageneriBoard.upside(this->sigh , movePoint.getY() , movePoint.getX());
-       imageneryOponentMoves = logic.PossibleMoves('X');
+        imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
+        imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
+        imageneryOponentMoves = logic.PossibleMoves('X');
+
+
+
         for (Point p1: imageneryOponentMoves) {
             imageneriBoard.addToBoard(p1.getX() , p1.getY() , 'X');
             imageneriBoard.upside('X' , p1.getY() , p1.getX());
@@ -56,6 +58,12 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     }
     return Point(4 , 2);
 }
+
+
+
+
+
+
 
 
 
