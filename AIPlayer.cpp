@@ -21,7 +21,7 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     Board imageneriBoard(b.getSize());
     Board imageneriBoard2(b.getSize());
     vector<Point> imageneryOponentMoves;
-    GameLogic logic(imageneriBoard);
+    logic(imageneriBoard);
     for (int p = 0; p < possibleMoves.size() ; p++){
         imageneriBoard = b;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
