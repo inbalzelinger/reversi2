@@ -22,6 +22,5 @@ AIPlayer.o: AIPlayer.cpp AIPlayer.h
 ConsolePlayer.o: ConsolePlayer.cpp ConsolePlayer.h
 	g++ -c ConsolePlayer.cpp
 
-
 main.o: main.cpp
 	g++ -c main.cpp
