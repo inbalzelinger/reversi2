@@ -9,22 +9,21 @@
 #include "ConsoleLogic.h"
 
 
-
+/*
 AIPlayer::AIPlayer() {
     this->sigh = ' ';
-}
+}*/
 
-AIPlayer::AIPlayer(char currentPlayer) {
-    this->sigh = currentPlayer;
-};
+AIPlayer::AIPlayer(char currentPlayer):Player(currentPlayer){};
 
 
 
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
+
     int numX = 0;
     int numO = 0;
     int maxNumZ = 0;
-
+    std::map<int,Point> maxScoreOfMoves;
     Board imageneriBoard(b.getSize());
     Board imageneriBoard2(b.getSize());
 
@@ -40,7 +39,7 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
         imageneryOponentMoves = logic.PossibleMoves('X');
-
+        maxNumZ=0;
         for (Point p1: imageneryOponentMoves) {
             imageneriBoard2 = imageneriBoard;
 
@@ -63,21 +62,14 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             if (numX - numO > maxNumZ) {
                 maxNumZ = numX - numO;
             }
-            //add p to a map with maxNumZ;
-        }
+        }maxScoreOfMoves[maxNumZ]=possibleMoves[p];
     }
     //return the p with the min maxNumZ
-    return Point(4 , 2);
+    return maxScoreOfMoves[maxScoreOfMoves.rbegin()->first];
 }
 
-
-
-
-
-
-
-
-
+/*
 char AIPlayer::getSigh() {
     return Player::getSigh();
 }
+*/

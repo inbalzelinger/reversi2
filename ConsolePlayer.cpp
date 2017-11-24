@@ -6,13 +6,11 @@
 #include "ConsolePlayer.h"
 
 
-
+/*
 ConsolePlayer::ConsolePlayer() {
-    this->sigh = ' ';
-}
-ConsolePlayer::ConsolePlayer(char currentPlayer) {
-    this->sigh = currentPlayer;
-}
+    this->sigh = ' ';*/
+
+ConsolePlayer::ConsolePlayer(char currentPlayer): Player(currentPlayer){};
 
 
 
@@ -39,7 +37,7 @@ Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     return (Point(col , row));
 }
 
-
+/*
 char ConsolePlayer::getSigh() {
-    return this->sigh;
-}
+    return this->sign;
+}*/

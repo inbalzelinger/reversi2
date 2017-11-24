@@ -28,6 +28,7 @@ GameLevel::~GameLevel() {
 
 
 int GameLevel::points(Player &p) {
+    cout<<p.getSigh()<<endl;
     int num = 0;
     for(int i = 0; i < this->board->getSize(); i++) {
         for (int j = 0; j < this->board->getSize(); j++) {
@@ -66,6 +67,7 @@ void GameLevel::play() {
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
     while (this->points(*this->blackPlayer)!=0 && this->points(*this->whitePlayer)!=0) {
+        cout<<"1111\n";
         optionsBlack = this->turn(this->blackPlayer->getSigh());
         if (!optionsBlack.empty()) {
           p = blackPlayer->makeMove(optionsBlack ,  *this->board);
@@ -82,6 +84,7 @@ void GameLevel::play() {
             break;
         }
     }
+    cout<<"1111\n";
     numX = this->points(*this->blackPlayer);
     numO = this->points(*this->whitePlayer);
     cout<<*board;

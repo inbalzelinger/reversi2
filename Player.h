@@ -13,7 +13,7 @@
 class Player {
 
 private:
-    char sigh;
+    char sign;
 
 public:
 
@@ -25,17 +25,17 @@ public:
 
 **/
 
-    explicit Player(char currentPlayer);
+    Player(char currentPlayer);
 
 
-
+/*
     /**
 * function name: Player
 * defult constuctor.
-**/
+**
 
     Player();
-
+*/
 
     /**
 * function name: makeMove
@@ -49,9 +49,7 @@ public:
 * return the sigh of th
 **/
 
-    virtual char getSigh();
-
-
+    char getSigh();
 
 };
 

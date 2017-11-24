@@ -11,25 +11,25 @@
 
 class ConsolePlayer : public Player{
 private:
-    char sigh;
+    char sign;
 
 
 public:
-
+/*
     /**
 * function name: Player
 * constuctor, construct a Player by given player sigh.
 * @param - currentPlayer .
 
-**/
+**
     ConsolePlayer();
-
+*/
 
     /**
 * function name: Player
 * defult constuctor.
 **/
-    explicit ConsolePlayer(char currentPlayer);
+    ConsolePlayer(char currentPlayer);
 
     /**
 * function name: makeMove

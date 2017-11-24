@@ -6,12 +6,12 @@
 
 
 
-Player::Player(char currentPlayer): sigh(currentPlayer) {}
-
+Player::Player(char currentPlayer): sign(currentPlayer) {}
+/*
 Player::Player():sigh(' '){}
-
+*/
 char Player::getSigh() {
-    return this->sigh;
+    return this->sign;
 }
 
 

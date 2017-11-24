@@ -16,15 +16,16 @@ private:
 
 
 public:
+    /*
 
     /**
 * function name: Player
 * constuctor, construct a Player by given player sigh.
 * @param - currentPlayer .
 
-**/
+**
     AIPlayer();
-
+*/
 
     /**
 * function name: Player
