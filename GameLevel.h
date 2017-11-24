@@ -8,7 +8,7 @@
 
 #include "Board.h"
 #include "ConsolePlayer.h"
-#include "GameLogic.h"
+#include "ConsoleLogic.h"
 #include "AIPlayer.h"
 
 class GameLevel {
