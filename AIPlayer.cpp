@@ -25,23 +25,19 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     std::map<int,Point> maxScoreOfMoves;
     Board imageneriBoard(b.getSize());
     Board imageneriBoard2(b.getSize());
-    ConsolePlayer imageneryOponent('X');
     vector<Point> imageneryOponentMoves;
     GameLogic logic(b);
-    int minPossibleScore = b.getSize()*b.getSize();
-    Point movePoint;
-    int place = 0;
-    int oponentPossibleScore = 0;
     for (int p = 0; p < possibleMoves.size() ; p++){
         imageneriBoard = b;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
         imageneryOponentMoves = logic.PossibleMoves('X');
         maxNumZ=0;
-        for (Point p1: imageneryOponentMoves) {
+
+        for (int k = 0; k < imageneryOponentMoves.size() ; k++) {
             imageneriBoard2 = imageneriBoard;
-            imageneriBoard2.addToBoard(p1.getX() , p1.getY() , 'X');
-            imageneriBoard2.upside('X' , p1.getY() , p1.getX());
+            imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
+            imageneriBoard2.upside('X' , imageneryOponentMoves[k].getY() , imageneryOponentMoves[k].getX());
             for (int i = 0; i < b.getSize() ; i++) {
                 for (int j = 0; j < b.getSize() ; j++) {
                     if (imageneriBoard2.getBoard()[i][j] == 'X') {
@@ -59,7 +55,10 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             if (numX - numO > maxNumZ) {
                 maxNumZ = numX - numO;
             }
-        }maxScoreOfMoves[maxNumZ]=possibleMoves[p];
+        }
+
+
+        maxScoreOfMoves[maxNumZ]=possibleMoves[p];
     }
     //return the p with the min maxNumZ
     return maxScoreOfMoves[maxScoreOfMoves.rbegin()->first];

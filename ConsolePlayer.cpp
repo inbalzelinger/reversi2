@@ -15,6 +15,13 @@ ConsolePlayer::ConsolePlayer(char currentPlayer): Player(currentPlayer){};
 
 
 Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
+
+
+    cout << "your options are:" << endl;
+    for (int i = 0; i < possibleMoves.size(); i++) {
+        cout<<possibleMoves[i]<<" ";
+    }
+
     int col, row;
     int legalMoves = 0;
         cout <<endl << "enter your move column Space then row" << endl;

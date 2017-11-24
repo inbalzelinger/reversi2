@@ -47,10 +47,6 @@ vector<Point> GameLevel::turn(char playerSigh) {
     if (!playesOptions.empty()) {
         cout<<*this->board;
         cout << playerSigh <<" its your turn" << endl;
-        cout << "your options are:" << endl;
-        for (int i = 0; i < playesOptions.size(); i++) {
-            cout<<playesOptions[i]<<" ";
-        }
     } else {
         cout<<playerSigh<<":"<<"no possible moves for you"<<endl;
     }
@@ -67,7 +63,6 @@ void GameLevel::play() {
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
     while (this->points(*this->blackPlayer)!=0 && this->points(*this->whitePlayer)!=0) {
-        cout<<"1111\n";
         optionsBlack = this->turn(this->blackPlayer->getSigh());
         if (!optionsBlack.empty()) {
           p = blackPlayer->makeMove(optionsBlack ,  *this->board);
