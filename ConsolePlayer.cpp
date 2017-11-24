@@ -44,7 +44,3 @@ Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     return (Point(col , row));
 }
 
-/*
-char ConsolePlayer::getSigh() {
-    return this->sign;
-}*/
