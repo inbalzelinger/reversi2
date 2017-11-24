@@ -33,7 +33,6 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
         imageneryOponentMoves = logic.PossibleMoves('X');
         maxNumZ=0;
-
         for (int k = 0; k < imageneryOponentMoves.size() ; k++) {
             imageneriBoard2 = imageneriBoard;
             imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
@@ -56,8 +55,6 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
                 maxNumZ = numX - numO;
             }
         }
-
-
         maxScoreOfMoves[maxNumZ]=possibleMoves[p];
     }
     //return the p with the min maxNumZ

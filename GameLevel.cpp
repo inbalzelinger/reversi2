@@ -79,7 +79,6 @@ void GameLevel::play() {
             break;
         }
     }
-    cout<<"1111\n";
     numX = this->points(*this->blackPlayer);
     numO = this->points(*this->whitePlayer);
     cout<<*board;
