@@ -11,6 +11,7 @@
 #include "Point.h"
 #include "Board.h"
 #include "Logic.h"
+#include "ConsoleLogic.h"
 
 class ConsoleLogic : public Logic{
 private:

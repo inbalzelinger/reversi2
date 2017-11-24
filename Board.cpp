@@ -27,15 +27,15 @@ Board::Board(int size): size(size) {
 
 
 
-Board::Board(const Board &boardToCopy) {
-    this->size = boardToCopy.size;
-    this->board = new char* [this->size];
-    for(int i = 0; i < this->size; i++) {
-        this->board[i] = new char[this->size];
+Board::Board(const Board &boardToCopy): size(boardToCopy.getSize()) {
+    size = boardToCopy.size;
+    board = new char* [size];
+    for(int i = 0; i < size; i++) {
+        board[i] = new char[size];
     }
-    for(int i = 0; i < this->size; i++) {
-        for(int j = 0; j < this->size ; j++) {
-            this->board[i][j] = boardToCopy.board[i][j];
+    for(int i = 0; i < size; i++) {
+        for(int j = 0; j < size ; j++) {
+            board[i][j] = boardToCopy.getBoard()[i][j];
         }
     }
 }
@@ -80,9 +80,6 @@ ostream &operator <<(ostream &out , const Board &board1) {
 
 
 
-
-
-
  Board::~Board()  {
  for(int i = 0; i < this->size; i++){
    delete [] board[i];
@@ -94,7 +91,10 @@ ostream &operator <<(ostream &out , const Board &board1) {
 
 Board& Board::operator = (const Board& b) {
     if (this != &b) {
-        delete[] board;
+        for(int i = 0; i < this->size; i++){
+            delete [] board[i];
+        }
+        delete [] board;
         board =new char*[this->getSize()];
         for(int i = 0; i < this->size; i++) {
             this->board[i] = new char[this->size];

@@ -4,8 +4,6 @@
 
 #include <map>
 #include "AIPlayer.h"
-#include "Board.h"
-#include "ConsolePlayer.h"
 #include "ConsoleLogic.h"
 
 
@@ -18,18 +16,20 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     int numO = 0;
     int maxNumZ = 0;
     std::map<int,Point> maxScoreOfMoves;
-    Board imageneriBoard(b.getSize());
-    Board imageneriBoard2(b.getSize());
+    Board copyOfB(b);
+    Board imageneriBoard=copyOfB;
+
     vector<Point> imageneryOponentMoves;
     ConsoleLogic logic(imageneriBoard);
     for (int p = 0; p < possibleMoves.size() ; p++){
-        imageneriBoard = b;
+        imageneriBoard = copyOfB;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
         imageneryOponentMoves = logic.PossibleMoves('X');
         maxNumZ=0;
         for (int k = 0; k < imageneryOponentMoves.size() ; k++) {
-            imageneriBoard2 = imageneriBoard;
+            Board copyOfImaginaryBoard(imageneriBoard);
+            Board imageneriBoard2 = copyOfImaginaryBoard;
             imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
             imageneriBoard2.upside('X' , imageneryOponentMoves[k].getY() , imageneryOponentMoves[k].getX());
             for (int i = 0; i < b.getSize() ; i++) {
