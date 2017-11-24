@@ -94,6 +94,8 @@ ostream &operator <<(ostream &out , const Board &board1) {
 
 Board& Board::operator = (const Board& b) {
     if (this != &b) {
+        delete[] board;
+        board =new char*[this->getSize()];
         for(int i = 0; i < this->size; i++) {
             this->board[i] = new char[this->size];
         }

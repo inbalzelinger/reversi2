@@ -9,11 +9,6 @@
 #include "ConsoleLogic.h"
 
 
-/*
-AIPlayer::AIPlayer() {
-    this->sigh = ' ';
-}*/
-
 AIPlayer::AIPlayer(char currentPlayer):Player(currentPlayer){};
 
 
@@ -26,7 +21,7 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     Board imageneriBoard(b.getSize());
     Board imageneriBoard2(b.getSize());
     vector<Point> imageneryOponentMoves;
-    GameLogic logic(b);
+    GameLogic logic(imageneriBoard);
     for (int p = 0; p < possibleMoves.size() ; p++){
         imageneriBoard = b;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
@@ -60,9 +55,3 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     //return the p with the min maxNumZ
     return maxScoreOfMoves[maxScoreOfMoves.rbegin()->first];
 }
-
-/*
-char AIPlayer::getSigh() {
-    return Player::getSigh();
-}
-*/

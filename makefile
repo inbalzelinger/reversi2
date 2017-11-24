@@ -1,5 +1,5 @@
-a.out: Board.o Point.o GameLevel.o GameLogic.o Player.o ConsolePlayer.o main.o
-	g++ Board.o Point.o GameLevel.o GameLogic.o Player.o ConsolePlayer.o main.o
+a.out: Board.o Point.o GameLevel.o GameLogic.o Player.o ConsolePlayer.o AIPlayer.o main.o
+	g++ Board.o Point.o GameLevel.o GameLogic.o Player.o ConsolePlayer.o AIPlayer.o main.o
 
 Board.o: Board.cpp Board.h
 	g++ -c Board.cpp
@@ -15,6 +15,9 @@ GameLogic.o: GameLogic.cpp GameLogic.h
 
 Player.o: Player.cpp Player.h
 	g++ -c Player.cpp
+
+AIPlayer.o: AIPlayer.cpp AIPlayer.h
+    g++ -c AIPlayer.cpp
 
 ConsolePlayer.o: ConsolePlayer.cpp ConsolePlayer.h
 	g++ -c ConsolePlayer.cpp
