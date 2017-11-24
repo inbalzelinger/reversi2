@@ -19,14 +19,12 @@ AIPlayer::AIPlayer(char currentPlayer):Player(currentPlayer){};
 
 
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
-
     int numX = 0;
     int numO = 0;
     int maxNumZ = 0;
     std::map<int,Point> maxScoreOfMoves;
     Board imageneriBoard(b.getSize());
     Board imageneriBoard2(b.getSize());
-
     ConsolePlayer imageneryOponent('X');
     vector<Point> imageneryOponentMoves;
     GameLogic logic(b);
@@ -42,7 +40,6 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
         maxNumZ=0;
         for (Point p1: imageneryOponentMoves) {
             imageneriBoard2 = imageneriBoard;
-
             imageneriBoard2.addToBoard(p1.getX() , p1.getY() , 'X');
             imageneriBoard2.upside('X' , p1.getY() , p1.getX());
             for (int i = 0; i < b.getSize() ; i++) {
