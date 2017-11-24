@@ -29,14 +29,14 @@ public:
 * function name: Player
 * defult constuctor.
 **/
-    ConsolePlayer(char currentPlayer);
+    explicit ConsolePlayer(char currentPlayer);
 
     /**
 * function name: makeMove
 * makes one move at the play.
 **/
 
-    Point makeMove(vector<Point> possibleMoves);
+    Point makeMove(vector<Point> possibleMoves , Board &b);
 
 
     /**

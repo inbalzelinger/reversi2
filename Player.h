@@ -8,6 +8,7 @@
 
 #include <vector>
 #include "Point.h"
+#include "Board.h"
 
 class Player {
 
@@ -41,7 +42,7 @@ public:
 * makes one move at the play.
 **/
 
-    virtual Point makeMove(vector<Point> possibleMoves) = 0;
+    virtual Point makeMove(vector<Point> possibleMoves , Board &b) = 0;
 
     /**
 * function name: getSigh

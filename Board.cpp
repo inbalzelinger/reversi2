@@ -130,7 +130,6 @@ void Board::addToBoard(int col ,int row , char playerSigh) {
 
 
 
-
 void Board::upside(char playerSigh , const int row , const int col) {
     char otherPlayer;
     int counter = 0;

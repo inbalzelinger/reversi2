@@ -165,7 +165,35 @@ vector<Point> GameLogic::PossibleMoves(char playerSigh) const {
                 }
             }
         }
-        return moves1;
+
+
+
+    int j = 0;
+    int flag = 0;
+
+    vector<Point> playesOptions;
+
+    if (playesOptions.empty() && !moves1.empty()) {
+        playesOptions.push_back(moves1[j]);
+        j++;
+    }
+    while (j < moves1.size()) {
+        for (int i = 0; i < playesOptions.size(); i++) {
+            if (playesOptions[i] == (moves1[j])) {
+                break;
+            } else {
+                flag++;
+            }
+        }
+        if (flag == playesOptions.size()) {
+            playesOptions.push_back(moves1[j]);
+        }
+        flag = 0;
+        j++;
+    }
+
+
+        return playesOptions;
 
 
     }

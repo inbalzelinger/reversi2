@@ -10,8 +10,8 @@
 GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),board(&b) , blackTurn(true) , whiteTurn(false) {
     this->blackPlayer = new ConsolePlayer('X');
     if(playerChoice==1){
-    this->whitePlayer = new ConsolePlayer('O');}
-    else if(playerChoice==2){
+    this->whitePlayer = new ConsolePlayer('O');
+    } else if(playerChoice==2){
         this->whitePlayer= new AIPlayer('O');
     }
     this->logic = new GameLogic(b);
@@ -42,28 +42,7 @@ int GameLevel::points(Player &p) {
 
 
 vector<Point> GameLevel::turn(char playerSigh) {
-    int j = 0;
-    int flag = 0;
-    vector<Point> playesOptions;
-    vector<Point> playesOptionsToCheck = this->logic->PossibleMoves(playerSigh);
-    if (playesOptions.empty() && !playesOptionsToCheck.empty()) {
-        playesOptions.push_back(playesOptionsToCheck[j]);
-        j++;
-    }
-    while (j < playesOptionsToCheck.size()) {
-        for (int i = 0; i < playesOptions.size(); i++) {
-            if (playesOptions[i] == (playesOptionsToCheck[j])) {
-                break;
-            } else {
-                flag++;
-            }
-        }
-        if (flag == playesOptions.size()) {
-            playesOptions.push_back(playesOptionsToCheck[j]);
-        }
-        flag = 0;
-        j++;
-    }
+    vector<Point> playesOptions = this->logic->PossibleMoves(playerSigh);;
     if (!playesOptions.empty()) {
         cout<<*this->board;
         cout << playerSigh <<" its your turn" << endl;
@@ -74,7 +53,6 @@ vector<Point> GameLevel::turn(char playerSigh) {
     } else {
         cout<<playerSigh<<":"<<"no possible moves for you"<<endl;
     }
-    playesOptionsToCheck.clear();
     return playesOptions;
 }
 
@@ -90,13 +68,13 @@ void GameLevel::play() {
     while (this->points(*this->blackPlayer)!=0 && this->points(*this->whitePlayer)!=0) {
         optionsBlack = this->turn(this->blackPlayer->getSigh());
         if (!optionsBlack.empty()) {
-          p = blackPlayer->makeMove(optionsBlack);
+          p = blackPlayer->makeMove(optionsBlack ,  *this->board);
             this->board->addToBoard(p.getX() , p.getY() , blackPlayer->getSigh());
             this->board->upside(blackPlayer->getSigh() , p.getY() , p.getX());
         }
         optionsWhite = this->turn(this->whitePlayer->getSigh());
         if (!optionsWhite.empty()) {
-           p = whitePlayer->makeMove(optionsWhite);
+           p = whitePlayer->makeMove(optionsWhite , *this->board);
             this->board->addToBoard(p.getX() , p.getY() , whitePlayer->getSigh());
             this->board->upside(whitePlayer->getSigh() , p.getY() , p.getX());
         }
