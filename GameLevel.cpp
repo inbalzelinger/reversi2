@@ -28,7 +28,6 @@ GameLevel::~GameLevel() {
 
 
 int GameLevel::points(Player &p) {
-    cout<<p.getSigh()<<endl;
     int num = 0;
     for(int i = 0; i < this->board->getSize(); i++) {
         for (int j = 0; j < this->board->getSize(); j++) {
