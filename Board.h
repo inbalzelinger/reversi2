@@ -124,6 +124,8 @@ public:
 
     char** getBoard() const ;
 
+    int count(char symbol);
+
 
 };
 

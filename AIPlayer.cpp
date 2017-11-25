@@ -11,6 +11,7 @@ AIPlayer::AIPlayer(char currentPlayer):Player(currentPlayer){};
 
 
 
+
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     int numX = 0;
     int numO = 0;
@@ -32,20 +33,10 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             Board imageneriBoard2 = copyOfImaginaryBoard;
             imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
             imageneriBoard2.upside('X' , imageneryOponentMoves[k].getY() , imageneryOponentMoves[k].getX());
-            for (int i = 0; i < b.getSize() ; i++) {
-                for (int j = 0; j < b.getSize() ; j++) {
-                    if (imageneriBoard2.getBoard()[i][j] == 'X') {
-                        numX++;
-                    }
-                }
-            }
-            for (int i = 0; i < b.getSize() ; i++) {
-                for (int j = 0; j < b.getSize() ; j++) {
-                    if (imageneriBoard2.getBoard()[i][j] == 'O') {
-                        numO++;
-                    }
-                }
-            }
+
+            numX = imageneriBoard2.count('X');
+            numO = imageneriBoard2.count(this->sigh);
+
             if (numX - numO > maxNumZ) {
                 maxNumZ = numX - numO;
             }
