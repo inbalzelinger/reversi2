@@ -11,15 +11,13 @@ AIPlayer::AIPlayer(char currentPlayer):Player(currentPlayer){};
 
 
 
-
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     int numX = 0;
     int numO = 0;
     int maxNumZ = 0;
     std::map<int,Point> maxScoreOfMoves;
     Board copyOfB(b);
-    Board imageneriBoard=copyOfB;
-
+    Board imageneriBoard = copyOfB;
     vector<Point> imageneryOponentMoves;
     ConsoleLogic logic(imageneriBoard);
     for (int p = 0; p < possibleMoves.size() ; p++){
@@ -33,10 +31,8 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             Board imageneriBoard2 = copyOfImaginaryBoard;
             imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
             imageneriBoard2.upside('X' , imageneryOponentMoves[k].getY() , imageneryOponentMoves[k].getX());
-
             numX = imageneriBoard2.count('X');
             numO = imageneriBoard2.count(this->sigh);
-
             if (numX - numO > maxNumZ) {
                 maxNumZ = numX - numO;
             }
