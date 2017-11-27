@@ -21,6 +21,9 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     vector<Point> imageneryOponentMoves;
     ConsoleLogic logic(imageneriBoard);
     for (int p = 0; p < possibleMoves.size() ; p++){
+        cout<<possibleMoves[p]<<endl;
+    }
+    for (int p = 0; p < possibleMoves.size() ; p++){
         imageneriBoard = copyOfB;
         imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
         imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
@@ -38,7 +41,9 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             }
         }
         maxScoreOfMoves[maxNumZ]=possibleMoves[p];
+
     }
     //return the p with the min maxNumZ
+    cout<<"played:  "<<maxScoreOfMoves[maxScoreOfMoves.rbegin()->first]<<endl;
     return maxScoreOfMoves[maxScoreOfMoves.rbegin()->first];
 }
