@@ -41,13 +41,20 @@ int GameLevel::points(Player &p) {
 
 
 
-vector<Point> GameLevel::turn(Symbol playerSigh) {
-    vector<Point> playesOptions = this->logic->PossibleMoves(playerSigh , *this->board);;
+vector<Point> GameLevel::turn(Symbol playerSign) {
+    vector<Point> playesOptions = this->logic->PossibleMoves(playerSign , *this->board);
+    char playerSymbol;
     if (!playesOptions.empty()) {
         cout<<*this->board;
-        cout << playerSigh <<" its your turn" << endl;
+        switch (playerSign){
+            case X:
+                playerSymbol='X';
+            case O:
+                playerSymbol='O';
+        }
+        cout << playerSymbol <<" its your turn" << endl;
     } else {
-        cout<<playerSigh<<":"<<"no possible moves for you"<<endl;
+        cout<<playerSymbol<<":"<<"no possible moves for you"<<endl;
     }
     return playesOptions;
 }

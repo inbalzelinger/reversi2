@@ -45,6 +45,7 @@ Board::Board(const Board &boardToCopy): size(boardToCopy.getSize()) {
 
 
 ostream &operator <<(ostream &out , const Board &board1) {
+    char cellValue=' ';
     out<<" |";
     for (int i = 1; i <= board1.size; i++) {
         out<<"  " << i <<"  |";
@@ -61,9 +62,19 @@ ostream &operator <<(ostream &out , const Board &board1) {
             if (j == 0) {
                 out <<i + 1 <<"|";
             }
-            if (board1.board[i][j] == 'X' ||board1.board[i][j] == 'O') {
-                //if(board1.getValueAt(i,j))
-                out << board1.board[i][j] << "    |";
+            if (board1.board[i][j] !=empty) {
+                switch (board1.getValueAt(i,j)){
+                    case X:
+                        cellValue='X';
+                        break;
+                    case O:
+                        cellValue='O';
+                        break;
+                    case empty:
+                        cellValue=' ';
+                        break;
+                }
+                out << cellValue << "    |";
             } else {
                 out << "     |";
             }
