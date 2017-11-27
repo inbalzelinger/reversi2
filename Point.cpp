@@ -25,7 +25,7 @@ int Point::getY() {
 
 
 ostream &operator <<(ostream &out , const Point &point) {
-    out <<"(" << point.x <<"," << point.y <<")";
+    out <<"(" << point.y <<"," << point.x <<")";
         return out;
     }
 

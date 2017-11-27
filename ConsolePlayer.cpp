@@ -24,9 +24,9 @@ Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
     int col, row;
     int legalMoves = 0;
-        cout <<endl << "enter your move column Space then row" << endl;
+        cout <<endl << "enter your move row Space then col" << endl;
         while (legalMoves == 0) {
-            cin >> col >> row;
+            cin >> row >> col;
             cin.clear();
             cin.ignore(100 , '\n');
             //check if the move is on the list.
