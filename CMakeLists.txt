@@ -6,9 +6,8 @@ add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master/googlemock/include)
 include_directories(lib/googletest-master/googletest/include)
 
-set(SOURCE_FILES Board.cpp Board.h GameLevel.cpp GameLevel.h Player.cpp Player.h Point.cpp Point.h ConsolePlayer.cpp Logic.cpp Logic.h ConsolePlayer.h ConsoleLogic.cpp ConsoleLogic.h AIPlayer.cpp AIPlayer.h Symbol.h tests/main_test.cpp)
+set(SOURCE_FILES Board.cpp Board.h GameLevel.cpp GameLevel.h Player.cpp Player.h Point.cpp Point.h ConsolePlayer.cpp Logic.cpp Logic.h ConsolePlayer.h ConsoleLogic.cpp ConsoleLogic.h AIPlayer.cpp AIPlayer.h Symbol.h)
 set(TEST_FILES
-        tests/main_test.cpp
         tests/BoardTest.cpp)
 
 add_executable(untitled2 ${SOURCE_FILES} main.cpp)
