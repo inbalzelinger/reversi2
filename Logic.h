@@ -15,7 +15,7 @@ public:
     * @param player
     * @return vector of board cells
     */
-   virtual vector<Point> PossibleMoves(char playerSigh) ;
+   virtual vector<Point> PossibleMoves(Symbol playerSigh) ;
 
 
     //destructor

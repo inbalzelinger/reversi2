@@ -10,7 +10,7 @@
 ConsoleLogic::ConsoleLogic(){}
 
 
-vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
+vector<Point> ConsoleLogic::PossibleMoves(Symbol playerSigh , Board &b) const {
     vector<Point> moves1;
     char otherPlayer;
     int counter = 0;
@@ -199,13 +199,13 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
 
 
 
-void ConsoleLogic::upside(char playerSigh , const int row , const int col , Board &b) {
+void ConsoleLogic::upside(Symbol playerSigh , const int row , const int col , Board &b) {
     char otherPlayer;
     int counter = 0;
-    if (playerSigh == 'X')  {
-        otherPlayer = 'O';
+    if (playerSigh == X)  {
+        otherPlayer = O;
     } else {
-        otherPlayer = 'X';
+        otherPlayer = X;
     }
 // adds up
     for (int i = row ; i < b.getSize(); i++) {

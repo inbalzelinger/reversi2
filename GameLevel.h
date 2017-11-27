@@ -30,7 +30,7 @@ private:
 *@return vector<Point>.
 **/
 
-    vector<Point> turn(char playerSigh);
+    vector<Point> turn(Symbol playerSigh);
     /**
 * function name: points
 * count the points of the p and return them.
