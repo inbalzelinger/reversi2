@@ -10,7 +10,7 @@
 ConsolePlayer::ConsolePlayer() {
     this->sigh = ' ';*/
 
-ConsolePlayer::ConsolePlayer(char currentPlayer): Player(currentPlayer){};
+ConsolePlayer::ConsolePlayer(Symbol currentPlayer): Player(currentPlayer){};
 
 
 

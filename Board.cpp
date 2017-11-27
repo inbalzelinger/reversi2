@@ -10,28 +10,28 @@ using namespace std;
 
 
 Board::Board(int size): size(size) {
-   this->board = new char* [this->size];
+   this->board = new Symbol* [this->size];
     for(int i = 0; i < this->size; i++) {
-        this->board[i] = new char[this->size];
+        this->board[i] = new Symbol[this->size];
     }
     for(int i = 0; i < this->size; i++) {
         for(int j = 0; j < this->size ; j++) {
-            this->board[i][j] = ' ';
+            this->board[i][j] = empty;
         }
     }
-    this->board[size / 2][size / 2] = 'O';
-    this->board[(size / 2) - 1][(size / 2) - 1] = 'O';
-    this->board[size / 2][(size / 2) - 1] = 'X';
-    this->board[(size / 2) - 1][size / 2] = 'X';
+    this->board[size / 2][size / 2] = O;
+    this->board[(size / 2) - 1][(size / 2) - 1] = O;
+    this->board[size / 2][(size / 2) - 1] = X;
+    this->board[(size / 2) - 1][size / 2] = X;
 }
 
 
 
 Board::Board(const Board &boardToCopy): size(boardToCopy.getSize()) {
     size = boardToCopy.size;
-    board = new char* [size];
+    board = new Symbol* [size];
     for(int i = 0; i < size; i++) {
-        board[i] = new char[size];
+        board[i] = new Symbol[size];
     }
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size ; j++) {
@@ -45,6 +45,7 @@ Board::Board(const Board &boardToCopy): size(boardToCopy.getSize()) {
 
 
 ostream &operator <<(ostream &out , const Board &board1) {
+    char cellValue=' ';
     out<<" |";
     for (int i = 1; i <= board1.size; i++) {
         out<<"  " << i <<"  |";
@@ -61,8 +62,19 @@ ostream &operator <<(ostream &out , const Board &board1) {
             if (j == 0) {
                 out <<i + 1 <<"|";
             }
-            if (board1.board[i][j] == 'X' ||board1.board[i][j] == 'O') {
-                out << board1.board[i][j] << "    |";
+            if (board1.board[i][j] !=empty) {
+                switch (board1.getValueAt(i,j)){
+                    case X:
+                        cellValue='X';
+                        break;
+                    case O:
+                        cellValue='O';
+                        break;
+                    case empty:
+                        cellValue=' ';
+                        break;
+                }
+                out << cellValue << "    |";
             } else {
                 out << "     |";
             }
@@ -88,7 +100,7 @@ ostream &operator <<(ostream &out , const Board &board1) {
 }
 
 
-int Board::count(char symbol) {
+int Board::count(Symbol symbol) {
     int numSymbol = 0;
     for (int i = 0; i < this->size ; i++) {
 
@@ -102,7 +114,7 @@ int Board::count(char symbol) {
 }
 
 
-char Board::getValueAt(int row, int col) const {
+Symbol Board::getValueAt(int row, int col) const {
     return this->board[row][col];
 }
 
@@ -112,9 +124,9 @@ Board& Board::operator = (const Board& b) {
             delete [] board[i];
         }
         delete [] board;
-        board =new char*[this->getSize()];
+        board =new Symbol*[this->getSize()];
         for(int i = 0; i < this->size; i++) {
-            this->board[i] = new char[this->size];
+            this->board[i] = new Symbol[this->size];
         }
         for(int i = 0; i < this->size; i++) {
             for(int j = 0; j < this->size ; j++) {
@@ -131,12 +143,9 @@ int Board::getSize() const {
     return this->size;
 }
 
-/*
-char** Board::getBoard() const {
-    return this->board;
-}*/
 
-void Board::addToBoard(int row ,int col , char playerSigh) {
+
+void Board::addToBoard(int row ,int col , Symbol playerSigh) {
     this->board[row - 1][col - 1] = playerSigh;
 }
 

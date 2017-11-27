@@ -4,6 +4,6 @@
 
 #include "Logic.h"
 
-vector<Point> Logic::PossibleMoves(char playerSigh) {
+vector<Point> Logic::PossibleMoves(Symbol playerSigh) {
     return vector<Point>();
 }

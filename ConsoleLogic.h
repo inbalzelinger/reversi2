@@ -20,9 +20,9 @@ public:
 
     ConsoleLogic();
 
-    vector<Point> PossibleMoves(char playerSigh , Board &b) const;
+    vector<Point> PossibleMoves(Symbol playerSigh , Board &b) const;
 
-    void upside(char playerSigh , const int row , const int col , Board &b);
+    void upside(Symbol playerSigh , const int row , const int col , Board &b);
 
 
     };

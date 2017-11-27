@@ -11,7 +11,7 @@
 
 class ConsolePlayer : public Player{
 private:
-    char sign;
+    Symbol sign;
 
 
 public:
@@ -29,7 +29,7 @@ public:
 * function name: Player
 * defult constuctor.
 **/
-    ConsolePlayer(char currentPlayer);
+    ConsolePlayer(Symbol currentPlayer);
 
     /**
 * function name: makeMove
@@ -44,7 +44,7 @@ public:
 * makes one move at the play.
 **/
 
-    char getSigh();
+    Symbol getSigh();
 
 
 

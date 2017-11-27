@@ -87,7 +87,7 @@ public:
  *
 **/
 
-    void addToBoard (int col ,int row, char playerSigh);
+    void addToBoard (int col ,int row, Symbol playerSigh);
 
 
 
@@ -111,14 +111,14 @@ public:
 
     //char** getBoard() const ;
 
-    int count(char symbol);
+    int count(Symbol symbol);
 /**
  * return the value of cell in index[row][col]
  * @param row
  * @param col
  * @return  char board[row][col]
  */
-    char getValueAt(int row, int col) const;
+    Symbol getValueAt(int row, int col) const;
 
 
 };

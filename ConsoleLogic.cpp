@@ -10,16 +10,16 @@
 ConsoleLogic::ConsoleLogic(){}
 
 
-vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
+vector<Point> ConsoleLogic::PossibleMoves(Symbol playerSigh , Board &b) const {
     vector<Point> moves1;
-    char otherPlayer;
+    Symbol otherPlayer;
     int counter = 0;
     int counterCol = 0;
     int colForDiagnol = 0;
-    if (playerSigh == 'X') {
-        otherPlayer = 'O';
+    if (playerSigh == X) {
+        otherPlayer = O;
         } else {
-            otherPlayer = 'X';
+            otherPlayer = X;
         }
         for (int i = 0; i < b.getSize(); i++) {
             for (int j = 0; j < b.getSize(); j++) {
@@ -31,7 +31,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             break;
                         } else if (b.getValueAt(i , col) == otherPlayer) {
                             counter++;
-                        } else if (b.getValueAt(i , col) == ' ') {
+                        } else if (b.getValueAt(i , col) == empty) {
                             if (counter != 0) {
                                 moves1.push_back(Point(i + 1, col + 1));
                             }
@@ -45,7 +45,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             break;
                         } else if (b.getValueAt(i , cool)== otherPlayer) {
                             counter++;
-                        } else if (b.getValueAt(i , cool) == ' ') {
+                        } else if (b.getValueAt(i , cool) == empty) {
                             if (counter != 0) {
                                 moves1.push_back(Point(i + 1 , cool + 1 ));
                             }
@@ -60,7 +60,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             break;
                         } else if (b.getValueAt(row , j) == otherPlayer) {
                             counter++;
-                        } else if (b.getValueAt(row , j)== ' ') {
+                        } else if (b.getValueAt(row , j)== empty) {
                             if (counter != 0) {
                                 moves1.push_back(Point(row + 1 , j + 1));
                             }
@@ -76,7 +76,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             break;
                         } else if (b.getValueAt(row , j)  == otherPlayer) {
                             counter++;
-                        } else if (b.getValueAt(row , j) == ' ') {
+                        } else if (b.getValueAt(row , j) == empty) {
                             if (counter != 0) {
                                 moves1.push_back(Point(row + 1 , j + 1));
                                 counter = 0;
@@ -94,7 +94,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             } else if (b.getValueAt(row , colForDiagnol)  == otherPlayer) {
                                 colForDiagnol++;
                                 counterCol++;
-                            } else if (b.getValueAt(row , colForDiagnol)  == ' ') {
+                            } else if (b.getValueAt(row , colForDiagnol)  == empty) {
                                 if (counterCol != 0){
 
                                     moves1.push_back(Point(row + 1 , colForDiagnol + 1));
@@ -115,7 +115,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             } else if (b.getValueAt(row , colForDiagnol)  == otherPlayer) {
                                 colForDiagnol++;
                                 counterCol++;
-                            } else if (b.getValueAt(row , colForDiagnol)  == ' ') {
+                            } else if (b.getValueAt(row , colForDiagnol)  == empty) {
                                 if (counterCol != 0) {
                                     moves1.push_back(Point(row + 1 , colForDiagnol + 1 ));
                                 }
@@ -133,7 +133,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             } else if (b.getValueAt(row , colForDiagnol) == otherPlayer) {
                                 colForDiagnol--;
                                 counterCol++;
-                            } else if (b.getValueAt(row , colForDiagnol) == ' ') {
+                            } else if (b.getValueAt(row , colForDiagnol) == empty) {
                                 if (counterCol != 0){
 
                                     moves1.push_back(Point(row + 1 , colForDiagnol + 1));
@@ -152,7 +152,7 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
                             } else if (b.getValueAt(row , colForDiagnol) == otherPlayer) {
                                 colForDiagnol--;
                                 counterCol++;
-                            } else if (b.getValueAt(row , colForDiagnol) == ' ') {
+                            } else if (b.getValueAt(row , colForDiagnol) == empty) {
                                 if (counterCol != 0) {
                                     moves1.push_back(Point(row + 1 , colForDiagnol + 1));
                                 }
@@ -169,27 +169,27 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
     int j = 0;
     int flag = 0;
 
-    vector<Point> playesOptions;
+    vector<Point> playersOptions;
 
-    if (playesOptions.empty() && !moves1.empty()) {
-        playesOptions.push_back(moves1[j]);
+    if (playersOptions.empty() && !moves1.empty()) {
+        playersOptions.push_back(moves1[j]);
         j++;
     }
     while (j < moves1.size()) {
-        for (int i = 0; i < playesOptions.size(); i++) {
-            if (playesOptions[i] == (moves1[j])) {
+        for (int i = 0; i < playersOptions.size(); i++) {
+            if (playersOptions[i] == (moves1[j])) {
                 break;
             } else {
                 flag++;
             }
         }
-        if (flag == playesOptions.size()) {
-            playesOptions.push_back(moves1[j]);
+        if (flag == playersOptions.size()) {
+            playersOptions.push_back(moves1[j]);
         }
         flag = 0;
         j++;
     }
-        return playesOptions;
+        return playersOptions;
 
     }
 
@@ -199,18 +199,18 @@ vector<Point> ConsoleLogic::PossibleMoves(char playerSigh , Board &b) const {
 
 
 
-void ConsoleLogic::upside(char playerSigh , const int row , const int col , Board &b) {
+void ConsoleLogic::upside(Symbol playerSigh , const int row , const int col , Board &b) {
     char otherPlayer;
     int counter = 0;
-    if (playerSigh == 'X')  {
-        otherPlayer = 'O';
+    if (playerSigh == X)  {
+        otherPlayer = O;
     } else {
-        otherPlayer = 'X';
+        otherPlayer = X;
     }
 // adds up
     for (int i = row ; i < b.getSize(); i++) {
 
-        if (b.getValueAt(i , col - 1) == ' ') {
+        if (b.getValueAt(i , col - 1) == empty) {
             break;
 
         } else if(b.getValueAt(i , col - 1) == otherPlayer) {
@@ -227,7 +227,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     counter = 0;
     // adds down
     for (int i = row - 2 ; i >= 0 ; i--) {
-        if (b.getValueAt(i , col - 1) == ' ') {
+        if (b.getValueAt(i , col - 1) == empty) {
             break;
 
         } else if(b.getValueAt(i , col - 1) == otherPlayer) {
@@ -244,7 +244,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     counter = 0;
     // adds left
     for (int i = col - 2 ; i >= 0 ; i--) {
-        if (b.getValueAt(row - 1 , i) == ' ') {
+        if (b.getValueAt(row - 1 , i) == empty) {
             break;
         } else if(b.getValueAt(row - 1 , i) == otherPlayer) {
             counter++;
@@ -261,7 +261,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     counter = 0;
     // adds right
     for (int i = col ; i < b.getSize() ; i++) {
-        if (b.getValueAt(row - 1 , i) == ' ') {
+        if (b.getValueAt(row - 1 , i) == empty) {
             break;
 
         } else if(b.getValueAt(row - 1 , i) == otherPlayer) {
@@ -282,7 +282,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     int j = col;
     for (int i = row ; i < b.getSize() ; i++) {
         if ( j < b.getSize()) {
-            if (b.getValueAt(i , j) == ' ') {
+            if (b.getValueAt(i , j) == empty) {
                 break;
             } else if(b.getValueAt(i , j) == otherPlayer) {
                 counter++;
@@ -304,7 +304,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     counter = 0;
     for (int i = row - 2 ; i >= 0 ; i--) {
         if (j >= 0) {
-            if (b.getValueAt(i , j) == ' ') {
+            if (b.getValueAt(i , j) == empty) {
                 break;
 
             } else if(b.getValueAt(i , j) == otherPlayer) {
@@ -327,7 +327,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     counter = 0;
     for (int i = row ; i < b.getSize() ; i++) {
         if ( j >= 0) {
-            if (b.getValueAt(i , j) == ' ') {
+            if (b.getValueAt(i , j) == empty) {
                 break;
             } else if(b.getValueAt(i , j) == otherPlayer) {
                 counter++;
@@ -349,7 +349,7 @@ void ConsoleLogic::upside(char playerSigh , const int row , const int col , Boar
     for (int i = row - 2 ; i >= 0 ; i--) {
         if (j < b.getSize()) {
 
-            if (b.getValueAt(i , j)  == ' ') {
+            if (b.getValueAt(i , j)  == empty) {
                 break;
 
             } else if(b.getValueAt(i , j)  == otherPlayer) {

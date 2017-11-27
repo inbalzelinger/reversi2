@@ -12,7 +12,7 @@ class AIPlayer: public Player {
 
 
 private:
-    char sigh;
+    Symbol sign;
 
 
 public:
@@ -31,7 +31,7 @@ public:
 * function name: Player
 * defult constuctor.
 **/
-    explicit AIPlayer(char currentPlayer);
+    explicit AIPlayer(Symbol currentPlayer);
 
     /**
 * function name: makeMove
@@ -46,7 +46,7 @@ public:
 * makes one move at the play.
 **/
 
-    char getSigh();
+    Symbol getSigh();
 
 };
 

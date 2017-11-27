@@ -9,11 +9,12 @@
 #include <vector>
 #include "Point.h"
 #include "Board.h"
+#include "Symbol.h"
 
 class Player {
 
 private:
-    char sign;
+     Symbol sign;
 
 public:
 
@@ -25,7 +26,7 @@ public:
 
 **/
 
-    Player(char currentPlayer);
+    Player(Symbol currentPlayer);
 
 
 /*
@@ -49,7 +50,7 @@ public:
 * return the sigh of th
 **/
 
-    char getSigh();
+    Symbol getSign();
 
 };
 
