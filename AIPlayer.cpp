@@ -42,6 +42,7 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             logic.upside(X, imageneryOponentMoves[k].getRow() , imageneryOponentMoves[k].getCol() , imageneriBoard2);
 
 
+
             numX = imageneriBoard2.count(X);
             numO = imageneriBoard2.count(this->sign);
             if (numX - numO > maxNumZ) {
