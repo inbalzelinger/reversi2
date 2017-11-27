@@ -10,7 +10,7 @@
 #include <iostream>
 #include <vector>
 #include "Point.h"
-
+#include "Symbol.h"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ using namespace std;
 class Board {
 
 private:
-    char** board;
+    Symbol ** board;
     int size;
 
 
