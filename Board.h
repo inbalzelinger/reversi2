@@ -91,19 +91,6 @@ public:
 
 
 
-    /**
-* function name: upside
-* changes the points on the board between the new point of the current player to his next point
-     * on the line (strait back right left and diagnols.
-* @param - currentPlayer - the player whos just played. row - the row where he put his point
-     * col- the column where he fut his point
-* @return -  void.
-*
-**/
-
-    void upside(char playerSigh , const int row , const int col);
-
-
 
     /**
 * function name: getSize
@@ -122,9 +109,16 @@ public:
 *
 **/
 
-    char** getBoard() const ;
+    //char** getBoard() const ;
 
     int count(char symbol);
+/**
+ * return the value of cell in index[row][col]
+ * @param row
+ * @param col
+ * @return  char board[row][col]
+ */
+    char getValueAt(int row, int col) const;
 
 
 };

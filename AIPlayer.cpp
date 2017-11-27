@@ -19,21 +19,29 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     Board copyOfB(b);
     Board imageneriBoard = copyOfB;
     vector<Point> imageneryOponentMoves;
-    ConsoleLogic logic(imageneriBoard);
+
+    ConsoleLogic logic;
+
     for (int p = 0; p < possibleMoves.size() ; p++){
         cout<<possibleMoves[p]<<endl;
     }
     for (int p = 0; p < possibleMoves.size() ; p++){
         imageneriBoard = copyOfB;
-        imageneriBoard.addToBoard(possibleMoves[p].getX() ,possibleMoves[p].getY() , this->sigh);
-        imageneriBoard.upside(this->sigh , possibleMoves[p].getY() , possibleMoves[p].getX());
-        imageneryOponentMoves = logic.PossibleMoves('X');
+        imageneriBoard.addToBoard(possibleMoves[p].getRow() ,possibleMoves[p].getCol() , this->sigh);
+
+        logic.upside(this->sigh , possibleMoves[p].getRow() , possibleMoves[p].getCol() , imageneriBoard);
+
+
+        imageneryOponentMoves = logic.PossibleMoves('X' , imageneriBoard);
         maxNumZ=0;
         for (int k = 0; k < imageneryOponentMoves.size() ; k++) {
             Board copyOfImaginaryBoard(imageneriBoard);
             Board imageneriBoard2 = copyOfImaginaryBoard;
-            imageneriBoard2.addToBoard(imageneryOponentMoves[k].getX() , imageneryOponentMoves[k].getY() , 'X');
-            imageneriBoard2.upside('X' , imageneryOponentMoves[k].getY() , imageneryOponentMoves[k].getX());
+            imageneriBoard2.addToBoard(imageneryOponentMoves[k].getRow() , imageneryOponentMoves[k].getCol() , 'X');
+
+            logic.upside('X', imageneryOponentMoves[k].getRow() , imageneryOponentMoves[k].getCol() , imageneriBoard2);
+
+
             numX = imageneriBoard2.count('X');
             numO = imageneriBoard2.count(this->sigh);
             if (numX - numO > maxNumZ) {

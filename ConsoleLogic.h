@@ -15,16 +15,17 @@
 
 class ConsoleLogic : public Logic{
 private:
-    Board* board;
 
 public:
-    ConsoleLogic(Board& b);
 
     ConsoleLogic();
 
-    vector<Point> PossibleMoves(char playerSigh) const;
+    vector<Point> PossibleMoves(char playerSigh , Board &b) const;
 
-};
+    void upside(char playerSigh , const int row , const int col , Board &b);
+
+
+    };
 
 
 #endif //UNTITLED2_CONSOLELOGIC_H

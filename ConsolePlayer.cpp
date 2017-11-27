@@ -14,6 +14,7 @@ ConsolePlayer::ConsolePlayer(char currentPlayer): Player(currentPlayer){};
 
 
 
+
 Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
 
@@ -30,8 +31,8 @@ Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             cin.clear();
             cin.ignore(100 , '\n');
             //check if the move is on the list.
-            for (int i = 0 ; i<possibleMoves.size(); i++) {
-                if (possibleMoves[i] == (Point(col , row))){
+            for (int i = 0 ; i < possibleMoves.size(); i++) {
+                if (possibleMoves[i] == (Point(row , col))){
                     legalMoves = 1;
                     break;
                 }
@@ -41,6 +42,6 @@ Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             }
         }
     possibleMoves.clear();
-    return (Point(col , row));
+    return (Point(row , col));
 }
 

@@ -13,8 +13,8 @@ using namespace std;
 
 class Point {
 private:
-    int x;
-    int y;
+    int row;
+    int col;
 
 
 
@@ -30,7 +30,7 @@ public:
 **/
 
 
-    Point(int x , int y);
+    Point(int row , int col);
 
     /**
 * function name: Point
@@ -53,14 +53,14 @@ public:
 *@return int
 **/
 
-    int getX();
+    int getRow();
 
     /**
 * function name: getY
 *@return int
 **/
 
-    int getY();
+    int getCol();
 };
 
 

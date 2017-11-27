@@ -14,7 +14,7 @@ GameLevel::GameLevel(Board &b,int playerChoice): playerChoice(playerChoice),boar
     } else if(playerChoice==2){
         this->whitePlayer= new AIPlayer('O');
     }
-    this->logic = new ConsoleLogic(b);
+    this->logic = new ConsoleLogic();
 }
 
 
@@ -31,7 +31,7 @@ int GameLevel::points(Player &p) {
     int num = 0;
     for(int i = 0; i < this->board->getSize(); i++) {
         for (int j = 0; j < this->board->getSize(); j++) {
-            if (this->board->getBoard()[i][j] == p.getSigh()) {
+            if (this->board->getValueAt(i,j) == p.getSigh()) {
                 num++;
             }
         }
@@ -42,7 +42,7 @@ int GameLevel::points(Player &p) {
 
 
 vector<Point> GameLevel::turn(char playerSigh) {
-    vector<Point> playesOptions = this->logic->PossibleMoves(playerSigh);;
+    vector<Point> playesOptions = this->logic->PossibleMoves(playerSigh , *this->board);;
     if (!playesOptions.empty()) {
         cout<<*this->board;
         cout << playerSigh <<" its your turn" << endl;
@@ -65,14 +65,14 @@ void GameLevel::play() {
         optionsBlack = this->turn(this->blackPlayer->getSigh());
         if (!optionsBlack.empty()) {
           p = blackPlayer->makeMove(optionsBlack ,  *this->board);
-            this->board->addToBoard(p.getX() , p.getY() , blackPlayer->getSigh());
-            this->board->upside(blackPlayer->getSigh() , p.getY() , p.getX());
+            this->board->addToBoard(p.getRow() , p.getCol() , blackPlayer->getSigh());
+            this->logic->upside(blackPlayer->getSigh() , p.getRow() , p.getCol() , *this->board);
         }
         optionsWhite = this->turn(this->whitePlayer->getSigh());
         if (!optionsWhite.empty()) {
            p = whitePlayer->makeMove(optionsWhite , *this->board);
-            this->board->addToBoard(p.getX() , p.getY() , whitePlayer->getSigh());
-            this->board->upside(whitePlayer->getSigh() , p.getY() , p.getX());
+            this->board->addToBoard(p.getRow() , p.getCol() , whitePlayer->getSigh());
+            this->logic->upside(whitePlayer->getSigh() , p.getRow() , p.getCol() , *this->board);
         }
         if (optionsBlack.empty() && optionsWhite.empty()) {
             break;

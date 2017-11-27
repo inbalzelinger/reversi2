@@ -9,29 +9,29 @@
 #include <iostream>
 using namespace std;
 
-Point::Point(int x , int y): x(x) , y(y){}
+Point::Point(int row , int col): row(row) , col(col){}
 
-Point::Point(): x(-1) , y(-1) {}
+Point::Point(): row(-1) , col(-1) {}
 
 
-int Point::getX() {
-    return this->x;
+int Point::getRow(){
+    return this->row;
 }
 
-int Point::getY() {
-    return this->y;
+int Point::getCol() {
+    return this->col;
 }
 
 
 
 ostream &operator <<(ostream &out , const Point &point) {
-    out <<"(" << point.y <<"," << point.x <<")";
+    out <<"(" << point.row <<"," << point.col <<")";
         return out;
     }
 
 
 
 bool Point::operator ==(const Point &point) const {
-    return (this->x == point.x && this->y == point.y);
+    return (this->row == point.row && this->col == point.col);
 
 }
