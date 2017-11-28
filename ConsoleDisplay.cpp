@@ -11,16 +11,16 @@ void ConsoleDisplay::showMenu() {
 }
 void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,Board &board) {
     char symbolToPrint;
+    switch (playerSymbol){
+        case X:
+            symbolToPrint='X';
+            break;
+        case O:
+            symbolToPrint='O';
+            break;
+    }
     if (isPossibleToMove) {
         cout<<board<<endl;
-        switch (playerSymbol){
-            case X:
-                symbolToPrint='X';
-                break;
-            case O:
-                symbolToPrint='O';
-                break;
-        }
         cout << symbolToPrint <<" its your turn" << endl;
     } else {
         cout<<symbolToPrint<<":"<<"no possible moves for you"<<endl;
@@ -39,6 +39,7 @@ void ConsoleDisplay::showStepsOptions(vector<Point> moves) {
     for (int i = 0; i < moves.size(); i++) {
         cout << moves[i] << " ";
     }
+    cout<<endl;
 }
 
 
