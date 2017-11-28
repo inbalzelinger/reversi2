@@ -31,13 +31,6 @@ private:
 **/
 
     vector<Point> turn(Symbol playerSigh);
-    /**
-* function name: points
-* count the points of the p and return them.
-*@param p - player.
-*@return int.
-**/
-    int points(Player &p);
 
 
 

@@ -22,9 +22,7 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
     ConsoleLogic logic;
 
-    for (int p = 0; p < possibleMoves.size(); p++) {
-        cout << possibleMoves[p] << endl;
-    }
+
 
 
     for (int p = 0; p < possibleMoves.size(); p++) {
@@ -44,14 +42,11 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
             cout << imageneriBoard2 << endl;
             numX = imageneriBoard2.count(X);
-            cout << "num of x  " << numX << endl;
             numO = imageneriBoard2.count(O);
-            cout << "num of o  " << numO << endl;
             if (numX - numO > maxNumZ) {
                 maxNumZ = numX - numO;
             }
         }
-        cout << maxNumZ << endl;
         maxScoreOfMoves[maxNumZ] = possibleMoves[p];
 
     }
@@ -61,9 +56,6 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
         if (current < k) {
             k = current;
         }
-        //return the p with the min maxNumZ
-        cout<<k<<endl;
-        //cout<<"played:  "<<maxScoreOfMoves.rbegin()->first<<"   "<<maxScoreOfMoves[maxScoreOfMoves.rbegin()->first]<<endl;
         return maxScoreOfMoves[k];
     }
 }

@@ -28,17 +28,6 @@ GameLevel::~GameLevel() {
 }
 
 
-int GameLevel::points(Player &p) {
-    int num = 0;
-    for(int i = 0; i < this->board->getSize(); i++) {
-        for (int j = 0; j < this->board->getSize(); j++) {
-            if (this->board->getValueAt(i,j) == p.getSign()) {
-                num++;
-            }
-        }
-    }
-    return num;
-}
 
 
 
@@ -56,7 +45,8 @@ void GameLevel::play() {
     Point p;
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
-    while (this->points(*this->blackPlayer) != 0 && this->points(*this->whitePlayer) != 0) {
+    while (board->count(this->blackPlayer->getSign()) != 0 &&
+            board->count(this->whitePlayer->getSign()) != 0) {
         optionsBlack = this->turn(this->blackPlayer->getSign());
         if (!optionsBlack.empty()) {
             consoleDisplay->showStepsOptions(optionsBlack);
