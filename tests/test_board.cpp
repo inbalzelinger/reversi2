@@ -7,8 +7,9 @@
 
 TEST(boardTest, addToBoard) {
     Board b(8);
-    b.addToBoard(6 , 7 , X);
-    Symbol symbol = b.getValueAt(6 , 7);
-    EXPECT_EQ(symbol, X);
+    b.addToBoard(2 , 2 , O);
+    Symbol symbol = b.getValueAt(1 , 1);
+    EXPECT_EQ(symbol, 1);
+
 
 }
