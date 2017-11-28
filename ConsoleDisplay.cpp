@@ -27,8 +27,17 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
     }
 }
 void ConsoleDisplay::showEndingStatus(Symbol winnerSymbol,int points) {
-    if (winnerSymbol!=NULL){
-        cout<< winnerSymbol <<" you win with: "<<points<<" points" <<endl;
+    char symbolToPrint;
+    switch (winnerSymbol){
+        case X:
+            symbolToPrint='X';
+            break;
+        case O:
+            symbolToPrint='O';
+            break;
+    }
+    if (winnerSymbol!=empty){
+        cout<< symbolToPrint <<" you win with: "<<points<<" points" <<endl;
     } else {
         cout<<"its a tie" <<endl;
     }
@@ -39,7 +48,7 @@ void ConsoleDisplay::showStepsOptions(vector<Point> moves) {
     for (int i = 0; i < moves.size(); i++) {
         cout << moves[i] << " ";
     }
-    cout<<endl;
+    cout <<endl << "enter your move row Space then col" << endl;
 }
 
 

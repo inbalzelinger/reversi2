@@ -17,12 +17,8 @@ ConsolePlayer::ConsolePlayer(Symbol currentPlayer): Player(currentPlayer){};
 
 Point ConsolePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
-
-
-
     int col, row;
     int legalMoves = 0;
-        cout <<endl << "enter your move row Space then col" << endl;
         while (legalMoves == 0) {
             cin >> row >> col;
             cin.clear();

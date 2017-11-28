@@ -50,20 +50,19 @@ void GameLevel::play() {
         optionsBlack = this->turn(this->blackPlayer->getSign());
         if (!optionsBlack.empty()) {
             consoleDisplay->showStepsOptions(optionsBlack);
+            p = blackPlayer->makeMove(optionsBlack, *this->board);
+            this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
+            this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         }
-        p = blackPlayer->makeMove(optionsBlack, *this->board);
-
-        this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
-        this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
             consoleDisplay->showStepsOptions(optionsWhite);
+            p = whitePlayer->makeMove(optionsWhite, *this->board);
+            this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
+            this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         }
-        p = whitePlayer->makeMove(optionsWhite, *this->board);
-        this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
-        this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
-
-        if (optionsBlack.empty() && optionsWhite.empty()) {
+        if (optionsBlack.empty() && optionsWhite.empty()||
+                (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
             break;
         }
     }
@@ -71,7 +70,7 @@ void GameLevel::play() {
     numO = board->count(this->whitePlayer->getSign());
     cout<<*board;
     Symbol winnerSymbol=empty;
-    int winnerScore;
+    int winnerScore=0;
     if (numX > numO) {
         winnerSymbol=X;
         winnerScore=numX;
