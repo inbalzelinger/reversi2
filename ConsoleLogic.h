@@ -1,7 +1,4 @@
-//
-// Name: Inbal Zelinger
-// ID: 311247340
-//
+
 
 #ifndef UNTITLED2_CONSOLELOGIC_H
 #define UNTITLED2_CONSOLELOGIC_H
@@ -19,16 +16,32 @@ private:
 public:
 
     /**
-* function name: count
-*return how many times the sybbol it gest is apper on bpard.
-* @param symbol.
-* @return -  int.
+* function name: ConsoleLogic
+*constructor. build consoleLogic
 *
 **/
 
     ConsoleLogic();
 
+
+    /**
+* function name: PossibleMoves.
+* the function return a vector of possible moves.
+* @param playerSigh , b - board.
+* @return vector<Point>
+*
+**/
+
     vector<Point> PossibleMoves(Symbol playerSigh , Board &b) const;
+
+    /**
+* function name: upside
+* the function flips the symbols between the point  it gets to the other player sign.
+* @param playerSigh , row , col , b - board.
+* @return void.
+*
+**/
+
 
     void upside(Symbol playerSigh , const int row , const int col , Board &b);
 

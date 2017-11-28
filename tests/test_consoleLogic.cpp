@@ -28,7 +28,4 @@ TEST(consoleLogic, upside) {
 
 
 
-
-
-
 }

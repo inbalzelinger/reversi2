@@ -29,14 +29,6 @@ public:
     Player(Symbol currentPlayer);
 
 
-/*
-    /**
-* function name: Player
-* defult constuctor.
-**
-
-    Player();
-*/
 
     /**
 * function name: makeMove

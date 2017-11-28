@@ -31,7 +31,6 @@ private:
 
 **/
 
-
     friend ostream &operator <<(ostream &out , const Board &point);
 
 
@@ -42,7 +41,6 @@ public:
  * function name: Board
  * constuctor, construct a new game board.
  * @param - .
-
 **/
 
     explicit Board(int size);

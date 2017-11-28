@@ -19,7 +19,8 @@ public:
 
     /**
 * function name: Player
-* defult constuctor.
+* constuctor.
+*@param currentPlayer - the sign og the player.
 **/
     explicit AIPlayer(Symbol currentPlayer);
 
@@ -32,12 +33,12 @@ public:
 
 
     /**
-* function name: getCurrentPlayer
-* makes one move at the play.
+* function name: getSigh
+* return the sign of the player.
+* @return Symbol.
 **/
 
     Symbol getSigh();
-
 };
 
 

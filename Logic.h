@@ -18,8 +18,6 @@ public:
    virtual vector<Point> PossibleMoves(Symbol playerSigh) ;
 
 
-    //destructor
-
 };
 
 

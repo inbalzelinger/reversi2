@@ -1,7 +1,4 @@
-//
-// Name: Inbal Zelinger
-// ID: 311247340
-//
+
 
 #ifndef UNTITLED2_GAMELEVEL_H
 #define UNTITLED2_GAMELEVEL_H
@@ -54,7 +51,6 @@ public:
 
 
 
-
     ~GameLevel();
 
 
@@ -73,8 +69,6 @@ public:
 **/
 
     void play();
-
-
 
 
 };
