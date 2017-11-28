@@ -1,6 +1,4 @@
-//
-// Created by hadar on 28/11/17.
-//
+
 
 #include "ConsoleDisplay.h"
 #include "iostream"

@@ -1,7 +1,4 @@
-//
-// Name: Inbal Zelinger
-// ID: 311247340
-//
+
 
 #include "Point.h"
 

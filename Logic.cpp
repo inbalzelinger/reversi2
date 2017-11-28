@@ -1,6 +1,4 @@
-//
-// Created by inbal on 23/11/17.
-//
+
 
 #include "Logic.h"
 

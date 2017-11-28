@@ -1,6 +1,3 @@
-//
-// Created by inbal on 28/11/17.
-//
 
 
 #include <googletest/include/gtest/gtest.h>

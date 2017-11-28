@@ -1,7 +1,3 @@
-//
-// Name: Inbal Zelinger
-// ID: 311247340
-//
 
 #ifndef UNTITLED2_BOARD_H
 #define UNTITLED2_BOARD_H

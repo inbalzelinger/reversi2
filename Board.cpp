@@ -1,9 +1,4 @@
 
-//
-// Name: Inbal Zelinger
-// ID: 311247340
-//
-
 #include "Board.h"
 using namespace std;
 

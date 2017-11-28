@@ -1,6 +1,4 @@
-//
-// Created by inbal on 28/11/17.
-//
+
 
 #include <gtest/gtest.h>
 #include "../Board.h"

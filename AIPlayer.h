@@ -1,6 +1,4 @@
-//
-// Created by hadar on 23/11/17.
-//
+
 
 #ifndef UNTITLED2_AIPLAYER_H
 #define UNTITLED2_AIPLAYER_H

@@ -1,6 +1,4 @@
-//
-// Created by hadar on 28/11/17.
-//
+
 
 #ifndef UNTITLED2_CONSOLEDISPLAY_H
 #define UNTITLED2_CONSOLEDISPLAY_H

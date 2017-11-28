@@ -1,6 +1,4 @@
-//
-// Created by hadar on 23/11/17.
-//
+
 
 #include <map>
 #include "AIPlayer.h"
