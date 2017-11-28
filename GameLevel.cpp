@@ -30,7 +30,6 @@ GameLevel::~GameLevel() {
 
 
 
-
 vector<Point> GameLevel::turn(Symbol playerSign) {
     vector<Point> playersOptions = this->logic->PossibleMoves(playerSign , *this->board);
     bool isPossibleToMove=!playersOptions.empty();
