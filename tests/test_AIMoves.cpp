@@ -51,7 +51,6 @@ TEST(AITest, makeMove) {
     b3.addToBoard(4 , 3 , empty);
     Point move3 = player.makeMove(logic.PossibleMoves(O , b3) , b3);
     b3.addToBoard(move3.getRow() ,move3.getCol() , O);
-    cout<<b3;
     if (b3.getValueAt(0 , 0) == 2) {
         EXPECT_EQ (b3.getValueAt(0 , 1) , 1);
     } else {

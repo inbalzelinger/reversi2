@@ -44,7 +44,7 @@ public:
 * makes one move at the play.
 **/
 
-    Symbol getSigh();
+    Symbol getSign();
 
 
 

@@ -12,8 +12,8 @@
 TEST(CosolePlayer, noMoves) {
 
     ConsoleLogic logic;
-    ConsolePlayer player1(X);
-    ConsolePlayer player2(O);
+
+
     Board b(6);
     b.addToBoard(3 , 3 , empty);
     b.addToBoard(4 , 3 , empty);
@@ -22,7 +22,7 @@ TEST(CosolePlayer, noMoves) {
     b.addToBoard(1 ,1 , O);
     b.addToBoard(1 ,2 , X);
     b.addToBoard(2 ,1 , X);
-    EXPECT_EQ(logic.PossibleMoves(player1.getSigh(), b) , NULL);
+    EXPECT_EQ(logic.PossibleMoves(X, b).size() , 0);
 
     Board b2(6);
     b2.addToBoard(3 , 3 , empty);
@@ -32,7 +32,7 @@ TEST(CosolePlayer, noMoves) {
     b2.addToBoard(1 ,1 , X);
     b2.addToBoard(1 ,2 , O);
     b2.addToBoard(2 ,1 , O);
-    EXPECT_EQ(logic.PossibleMoves(player2.getSigh(), b2) , NULL);
+    EXPECT_EQ(logic.PossibleMoves(O, b2).size() , 0);
 
 
 

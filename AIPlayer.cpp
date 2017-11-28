@@ -39,8 +39,6 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
             imageneriBoard2.addToBoard(imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), X);
             logic.upside(X, imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), imageneriBoard2);
 
-
-            cout << imageneriBoard2 << endl;
             numX = imageneriBoard2.count(X);
             numO = imageneriBoard2.count(O);
             if (numX - numO > maxNumZ) {
