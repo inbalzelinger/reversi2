@@ -10,17 +10,17 @@
 #include "ConsolePlayer.h"
 #include "ConsoleLogic.h"
 #include "AIPlayer.h"
+#include "ConsoleDisplay.h"
 
 class GameLevel {
 
 private:
-    bool blackTurn;
-    bool whiteTurn;
     Player* blackPlayer;
     Player* whitePlayer;
     Board* board;
     ConsoleLogic* logic;
     int playerChoice;
+    ConsoleDisplay* consoleDisplay;
 
 
     /**
@@ -51,7 +51,7 @@ public:
 
 **/
 
-    GameLevel(Board &b, int playerChoice);
+    GameLevel(Board &b, int playerChoice,ConsoleDisplay &consoleDisplay);
 
 
     /**

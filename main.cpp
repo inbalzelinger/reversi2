@@ -5,14 +5,16 @@
 
 #include "Board.h"
 #include "GameLevel.h"
+#include "ConsoleDisplay.h"
 
 
 int main() {
+    ConsoleDisplay consoleDisplay;
     int playerChoice;
     Board board(8);
-    cout <<"enter 1 for human player"<<endl<<"enter 2 for AI player"<<endl;
+    consoleDisplay.showMenu();
     cin >> playerChoice;
-    GameLevel gameLevel(board,playerChoice);
+    GameLevel gameLevel(board,playerChoice,consoleDisplay);
     gameLevel.play();
 }
 

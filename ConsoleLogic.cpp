@@ -163,9 +163,6 @@ vector<Point> ConsoleLogic::PossibleMoves(Symbol playerSigh , Board &b) const {
                 }
             }
         }
-
-
-
     int j = 0;
     int flag = 0;
 
