@@ -115,7 +115,7 @@ int Board::count(Symbol symbol) {
 
 
 Symbol Board::getValueAt(int row, int col) const {
-    return this->board[row - 1][col - 1];
+    return this->board[row][col];
 }
 
 Board& Board::operator = (const Board& b) {
