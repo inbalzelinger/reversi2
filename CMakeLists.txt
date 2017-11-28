@@ -1,15 +1,18 @@
 cmake_minimum_required(VERSION 3.8)
-project(untitled2)
+project(ReversiTests)
 
 set(CMAKE_CXX_STANDARD 98)
+
+set(SOURCE_FILES Point.cpp Point.h )
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lpthread")
 add_subdirectory(lib/googletest-master)
-include_directories(lib/googletest-master/googlemock/include)
-include_directories(lib/googletest-master/googletest/include)
+include_directories(lib/googletest-master)
+include_directories(lib/googletest-master)
 
-set(SOURCE_FILES Board.cpp Board.h GameLevel.cpp GameLevel.h Player.cpp Player.h Point.cpp Point.h ConsolePlayer.cpp Logic.cpp Logic.h ConsolePlayer.h ConsoleLogic.cpp ConsoleLogic.h AIPlayer.cpp AIPlayer.h Symbol.h)
-set(TEST_FILES
-        tests/mainTest.cpp)
+set(TEST_FILES tests/test_point.cpp )
 
-add_executable(untitled2 ${SOURCE_FILES} main.cpp)
-add_executable(ReversiTest ${TEST_FILES} ${SOURCE_FILES})
-target_link_libraries(ReversiTest gtest gtest_main)
+add_executable(Reversi2 ${SOURCE_FILES} ${TEST_FILES} tests/gtest_main.cpp)
+#add_executable(Reversi2 ${SOURCE_FILES} main.cpp)
+target_link_libraries(Reversi2 gtest gtest_main pthread)
+add_test(Tests Tests)
