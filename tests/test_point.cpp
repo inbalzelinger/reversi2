@@ -11,6 +11,5 @@ TEST(PointTest, compareOperator) {
     Point p3(5, 6);
     EXPECT_EQ(p1==p2 , 1);
     EXPECT_EQ(p1==p3 , 0);
-
 }
 

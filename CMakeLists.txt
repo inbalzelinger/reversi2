@@ -3,14 +3,15 @@ project(ReversiTests)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SOURCE_FILES Point.cpp Point.h )
+set(SOURCE_FILES Point.cpp Point.h AIPlayer.cpp AIPlayer.h Board.cpp Board.h ConsoleLogic.cpp ConsoleLogic.h ConsolePlayer.cpp ConsolePlayer.h
+        GameLevel.cpp GameLevel.h Logic.cpp Logic.h Player.cpp Player.h)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lpthread")
 add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master)
 include_directories(lib/googletest-master)
 
-set(TEST_FILES tests/test_point.cpp )
+set(TEST_FILES tests/test_point.cpp tests/test_board.cpp)
 
 add_executable(Reversi2 ${SOURCE_FILES} ${TEST_FILES} tests/gtest_main.cpp)
 #add_executable(Reversi2 ${SOURCE_FILES} main.cpp)

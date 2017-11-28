@@ -18,6 +18,14 @@ private:
 
 public:
 
+    /**
+* function name: count
+*return how many times the sybbol it gest is apper on bpard.
+* @param symbol.
+* @return -  int.
+*
+**/
+
     ConsoleLogic();
 
     vector<Point> PossibleMoves(Symbol playerSigh , Board &b) const;

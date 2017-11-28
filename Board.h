@@ -102,14 +102,15 @@ public:
     int getSize() const;
 
 
+
     /**
-* function name: getBoard
-*return the board
-* @return -  char**
+* function name: count
+*return how many times the sybbol it gest is apper on bpard.
+* @param symbol.
+* @return -  int.
 *
 **/
 
-    //char** getBoard() const ;
 
     int count(Symbol symbol);
 /**
