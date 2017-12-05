@@ -10,7 +10,7 @@ using namespace std;
 
 TEST(serverTest, start) {
     int expect = 0;
-    Server s(8000);
+    Server s(5036);
     try {
         s.start();
     } catch (const char* msg) {
