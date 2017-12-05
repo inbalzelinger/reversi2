@@ -11,9 +11,9 @@ add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master)
 include_directories(lib/googletest-master)
 
-set(TEST_FILES tests/test_point.cpp tests/test_board.cpp tests/test_AIMoves.cpp tests/test_consolePlayer.cpp tests/test_consoleLogic.cpp)
+set(TEST_FILES tests/test_point.cpp tests/test_board.cpp tests/test_AIMoves.cpp tests/test_consolePlayer.cpp tests/test_consoleLogic.cpp tests/gtest_server.cpp)
 
-add_executable(Reversi2 ${SOURCE_FILES} ${TEST_FILES} tests/gtest_main.cpp)
-#add_executable(Reversi2 ${SOURCE_FILES} main.cpp)
+#add_executable(Reversi2 ${SOURCE_FILES} ${TEST_FILES} tests/gtest_main.cpp)
+add_executable(Reversi2 ${SOURCE_FILES} main.cpp)
 target_link_libraries(Reversi2 gtest gtest_main pthread)
 add_test(Tests Tests)
