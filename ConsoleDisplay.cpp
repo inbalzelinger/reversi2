@@ -5,7 +5,8 @@
 using namespace std;
 
 void ConsoleDisplay::showMenu() {
-    cout <<"enter 1 for human player"<<endl<<"enter 2 for AI player"<<endl;
+    cout <<"enter 1 for local human player"<<endl<<"enter 2 for AI player"<<endl
+         <<"enter 3 for remote player"<<endl;
 }
 void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,Board &board) {
     char symbolToPrint;
