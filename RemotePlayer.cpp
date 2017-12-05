@@ -18,14 +18,10 @@ RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {
 }
 
 Point RemotePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
-
     char buff[3];
     read(client->getSocket() , buff , sizeof(buff));
-
-    int col = buff[2];
     int row = buff[0];
-
-
+    int col = buff[2];
     return (Point(row , col));
 }
 
