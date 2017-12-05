@@ -46,6 +46,12 @@ void Server::start() {
         close(clientSocket);
         }
     }
+void Server::stop() {
+    close(serverSocket);
 }
+void Server::handleClient(int clientSocket) {
+    cout<<"handleClient"<<endl;
+}
+
 
 
