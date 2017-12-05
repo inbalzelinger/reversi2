@@ -1,7 +1,9 @@
 
 
+#include <unistd.h>
 #include "GameLevel.h"
 #include "ConsoleLogic.h"
+#include "Client.h"
 
 
 GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): playerChoice(playerChoice),board(&b)
@@ -11,6 +13,15 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     this->whitePlayer = new ConsolePlayer(O);
     } else if(playerChoice==2){
         this->whitePlayer= new AIPlayer(O);
+    } else if(playerChoice==3){
+        Client *client=new Client("172.0.0.1",8000);
+        read(client->getSocket() , )
+
+
+
+
+        this->blackPlayer = new
+    this->whitePlayer= new AIPlayer(O);
     }
     this->logic = new ConsoleLogic();
 }
