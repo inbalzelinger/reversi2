@@ -61,5 +61,10 @@ int Client::sendMove(int arg1 ,char op , int arg2) {
 }
 
 
+int Client::getSocket() {
+    return this->clientSocket;
+}
+
+
 
 

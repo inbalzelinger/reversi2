@@ -12,6 +12,8 @@ public:
     void  connectToServer();
     int sendMove(int arg1, char op , int arg2);
 
+    int getSocket();
+
 private:
     const char *serverIP;
     int serverPort;
