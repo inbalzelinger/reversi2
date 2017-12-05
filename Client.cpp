@@ -48,7 +48,7 @@ void Client::connectToServer() {
     cout << "connected to server" << endl;
 }
 
-int Client::sendMove(int arg1 ,char op , int arg2) {
+int Client::sendMove(int arg1, int arg2) {
     int n = write(clientSocket , &arg1 , sizeof(arg1));
     if(n == -1) {
         throw "Error writing x to socket";
@@ -59,9 +59,7 @@ int Client::sendMove(int arg1 ,char op , int arg2) {
     }
 
 }
-
-
-int Client::getSocket() {
+    int Client::getSocket() {
     return this->clientSocket;
 }
 

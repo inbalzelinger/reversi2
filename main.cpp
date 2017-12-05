@@ -7,6 +7,7 @@
 
 
 int main() {
+    /*
     Client clientX("127.0.0.1", 8000);
     try {
         clientX.connectToServer();
@@ -20,7 +21,7 @@ int main() {
         cout<<msg<<endl;
     }
 }
-/*
+*/
     ConsoleDisplay consoleDisplay;
     int playerChoice;
     Board board(8);
@@ -29,4 +30,4 @@ int main() {
     GameLevel gameLevel(board,playerChoice,consoleDisplay);
     gameLevel.play();
 }
-*/
+

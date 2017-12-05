@@ -6,9 +6,12 @@
 
 LocalVsRemote::LocalVsRemote(Symbol currentPlayer) : Player(currentPlayer) {}
 
+LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client *client): Player(currentPlayer) {
+    this->client=client;
 
+}
 Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
-    int col, row;
+    int col = -1, row = -1;
     int legalMoves = 0;
     while (legalMoves == 0) {
         cin >> row >> col;
@@ -27,7 +30,6 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
     }
     possibleMoves.clear();
 
-
-
+    client->sendMove(row,col);
     return (Point(row , col));
 }

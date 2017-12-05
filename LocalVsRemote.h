@@ -7,14 +7,20 @@
 
 
 #include "Player.h"
+#include "Client.h"
 
 class LocalVsRemote: public Player {
 public:
     LocalVsRemote(Symbol currentPlayer);
-    Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b);
+    LocalVsRemote(Symbol currentPlayer,Client* client);
 
+    Point makeMove(vector<Point> possibleMoves , Board &b);
 
-    };
+private:
+    Client *client;
+    Symbol sign;
+
+};
 
 
 #endif //REVERSITESTS_LOCALVSREMOTE_H
