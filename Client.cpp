@@ -10,6 +10,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <string.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void Client::connectToServer() {
     }
     struct hostent *server;
     server = gethostbyaddr((const void *) &address, sizeof(address), AF_INET);
-    if (server == NULL) {
+    if (server == nullptr) {
         throw "Host is unreachable";
     }
 
@@ -47,4 +48,14 @@ void Client::connectToServer() {
     cout << "connected to server" << endl;
 }
 
+int Client::sendMove(int arg1 , int arg2) {
+    int n = write(clientSocket , &arg1 , sizeof(arg1));
+    if(n == -1) {
+        throw "Error writing x to socket";
+    }
+
 }
+
+
+
+
