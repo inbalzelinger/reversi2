@@ -11,8 +11,10 @@
 class LocalVsRemote: public Player {
 public:
     LocalVsRemote(Symbol currentPlayer);
+    Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b);
 
-};
+
+    };
 
 
 #endif //REVERSITESTS_LOCALVSREMOTE_H
