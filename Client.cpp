@@ -53,6 +53,14 @@ int Client::sendMove(int arg1 , int arg2) {
     if(n == -1) {
         throw "Error writing x to socket";
     }
+    n = write(clientSocket , &arg2 , sizeof(arg2));
+    if(n == -1) {
+        throw "Error writing x to socket";
+    }
+
+
+    //
+
 
 }
 
