@@ -7,7 +7,7 @@
 
 
 int main() {
-    Client client("172.18.8.77", 8000);
+    Client client("127.0.0.1", 8000);
     try {
         client.connectToServer();
     }catch (const char* msg){

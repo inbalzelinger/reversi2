@@ -15,7 +15,6 @@ using namespace std;
 
 Client::Client(const char *serverIp, int serverPort): serverIP(serverIp) ,
 serverPort(serverPort) , clientSocket(0){
-    cout<< "client c'tor"<<endl;
 }
 
 void Client::connectToServer() {
@@ -49,7 +48,7 @@ void Client::connectToServer() {
     cout << "connected to server" << endl;
 }
 
-int Client::sendMove(int arg1 , int arg2) {
+int Client::sendMove(int arg1 ,char op , int arg2) {
     int n = write(clientSocket , &arg1 , sizeof(arg1));
     if(n == -1) {
         throw "Error writing x to socket";
@@ -58,10 +57,6 @@ int Client::sendMove(int arg1 , int arg2) {
     if(n == -1) {
         throw "Error writing x to socket";
     }
-
-
-    //
-
 
 }
 
