@@ -12,10 +12,10 @@ AIPlayer::AIPlayer(Symbol currentPlayer):Player(currentPlayer){};
 Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     int numX = 0;
     int numO = 0;
-    int maxNumZ = 0;
+    int maxScoreForMove = 0;
     std::map<int, Point> maxScoreOfMoves;
     Board copyOfB(b);
-    Board imageneriBoard = copyOfB;
+    Board imaginaryBoard = copyOfB;
     vector<Point> imageneryOponentMoves;
 
     ConsoleLogic logic;
@@ -24,26 +24,26 @@ Point AIPlayer::makeMove(vector<Point> possibleMoves , Board &b) {
 
 
     for (int p = 0; p < possibleMoves.size(); p++) {
-        imageneriBoard = copyOfB;
-        imageneriBoard.addToBoard(possibleMoves[p].getRow(), possibleMoves[p].getCol(), O);
-        logic.upside(O, possibleMoves[p].getRow(), possibleMoves[p].getCol(), imageneriBoard);
+        imaginaryBoard = copyOfB;
+        imaginaryBoard.addToBoard(possibleMoves[p].getRow(), possibleMoves[p].getCol(), O);
+        logic.upside(O, possibleMoves[p].getRow(), possibleMoves[p].getCol(), imaginaryBoard);
 
 
-        imageneryOponentMoves = logic.PossibleMoves(X, imageneriBoard);
-        maxNumZ = 0;
+        imageneryOponentMoves = logic.PossibleMoves(X, imaginaryBoard);
+        maxScoreForMove = 0;
         for (int k = 0; k < imageneryOponentMoves.size(); k++) {
-            Board copyOfImaginaryBoard(imageneriBoard);
-            Board imageneriBoard2 = copyOfImaginaryBoard;
-            imageneriBoard2.addToBoard(imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), X);
-            logic.upside(X, imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), imageneriBoard2);
+            Board copyOfImaginaryBoard(imaginaryBoard);
+            Board imaginaryBoard2 = copyOfImaginaryBoard;
+            imaginaryBoard2.addToBoard(imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), X);
+            logic.upside(X, imageneryOponentMoves[k].getRow(), imageneryOponentMoves[k].getCol(), imaginaryBoard2);
 
-            numX = imageneriBoard2.count(X);
-            numO = imageneriBoard2.count(O);
-            if (numX - numO > maxNumZ) {
-                maxNumZ = numX - numO;
+            numX = imaginaryBoard2.count(X);
+            numO = imaginaryBoard2.count(O);
+            if (numX - numO > maxScoreForMove) {
+                maxScoreForMove = numX - numO;
             }
         }
-        maxScoreOfMoves[maxNumZ] = possibleMoves[p];
+        maxScoreOfMoves[maxScoreForMove] = possibleMoves[p];
 
     }
     int k = maxScoreOfMoves.rbegin()->first;
