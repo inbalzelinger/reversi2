@@ -2,19 +2,19 @@
 // Created by hadar on 05/12/17.
 //
 
-#include "Server.h
+#include "Server.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
 #include <algorithm>
 #include <iostream>
 #include <unistd.h>
-#include "netinet/in.h";
+#include "netinet/in.h"
 
 
 
 using  namespace std;
-#define MAX_CONNECTED_CLIENTS 2;
+#define MAX_CONNECTED_CLIENTS 2
 
 Server::Server(int port): port(port),serverSocket(0) {
 }

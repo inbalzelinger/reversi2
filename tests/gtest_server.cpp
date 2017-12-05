@@ -18,8 +18,7 @@ TEST(serverTest, start) {
         expect = -1;
     }
         EXPECT_EQ(expect , 0);
-    }
-
 }
+
 
 
