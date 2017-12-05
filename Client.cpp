@@ -4,7 +4,6 @@
 
 #include "Client.h"
 #include <iostream>
-#include <bits/socket.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -25,12 +24,14 @@ void Client::connectToServer() {
         throw "Error opening socket";
     }
     struct in_addr address;
+
     if (!inet_aton(serverIP, &address)) {
-        throw "cant parse IP adress";
+        throw "cant parse IP address";
     }
     struct hostent *server;
-    server = gethostbyaddr((const void *) &address, sizeof(address), AF_INET);
-    if (server == nullptr) {
+    server = gethostbyaddr((const void*) &address, sizeof(address), AF_INET);
+    if (server == NULL) {
+        cout<<h_errno<<endl;
         throw "Host is unreachable";
     }
 
