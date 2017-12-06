@@ -20,7 +20,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
         cout<<"you are "<<symbol<<endl;
         if (n == -1) {
-            cout << "ERROR" << endl;
+            cout << "ERROR READING THE SYMBOL" << endl;
         }
         if (symbol == '1') {
             this->blackPlayer = new LocalVsRemote(X, client);
