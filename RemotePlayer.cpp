@@ -8,13 +8,17 @@
 #include "ConsoleLogic.h"
 #include "Client.h"
 
+RemotePlayer::RemotePlayer(Symbol currentPlayer, Client* client) :Player(currentPlayer){
+    this->client=client;
+}
 RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {
+    /*
     this->client = new Client("127.0.0.1" , 8000);
     try {
         client->connectToServer();
     }catch (const char* msg){
         cout<<msg<<endl;
-    }
+    }*/
 }
 
 Point RemotePlayer::makeMove(vector<Point> possibleMoves , Board &b) {

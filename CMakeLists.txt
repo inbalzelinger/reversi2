@@ -4,7 +4,8 @@ project(ReversiTests)
 set(CMAKE_CXX_STANDARD 98)
 
 set(SOURCE_FILES Point.cpp Point.h AIPlayer.cpp AIPlayer.h Board.cpp Board.h ConsoleLogic.cpp ConsoleLogic.h ConsolePlayer.cpp ConsolePlayer.h
-        GameLevel.cpp GameLevel.h Logic.cpp Logic.h Player.cpp Player.h Symbol.h ConsoleDisplay.cpp ConsoleDisplay.h Client.cpp Client.h RemotePlayer.cpp RemotePlayer.h LocalVsRemote.cpp LocalVsRemote.h)
+        GameLevel.cpp GameLevel.h Logic.cpp Logic.h Player.cpp Player.h Symbol.h ConsoleDisplay.cpp ConsoleDisplay.h Client.cpp Client.h
+        RemotePlayer.cpp RemotePlayer.h LocalVsRemote.cpp LocalVsRemote.h)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lpthread")
 add_subdirectory(lib/googletest-master)

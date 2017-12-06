@@ -18,15 +18,16 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         client->connectToServer();
         int symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
+        cout<<symbol<<endl;
         if (n == -1) {
             cout << "ERROR" << endl;
         }
         if (symbol == 1) {
             this->blackPlayer = new LocalVsRemote(X, client);
-            this->whitePlayer=new RemotePlayer(O);
+            this->whitePlayer=new RemotePlayer(O,client);
         } else if (symbol == 2) {
             this->whitePlayer = new LocalVsRemote(O, client);
-            this->blackPlayer=new RemotePlayer(X);
+            this->blackPlayer=new RemotePlayer(X,client);
         }
     }
     this->logic = new ConsoleLogic();

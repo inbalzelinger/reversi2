@@ -16,6 +16,7 @@ private:
 
 public:
     RemotePlayer(Symbol currentPlayer);
+    RemotePlayer(Symbol currentPlayer,Client* client);
     /**
 * function name: makeMove
 * makes one move at the play.
