@@ -17,6 +17,7 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
         case O:
             symbolToPrint='O';
             break;
+
     }
     if (isPossibleToMove) {
         cout<<board<<endl;
