@@ -7,14 +7,21 @@
 
 
 int main() {
-    Client client("127.0.0.1", 8000);
+    /*
+    Client clientX("127.0.0.1", 8000);
     try {
-        client.connectToServer();
+        clientX.connectToServer();
+    }catch (const char* msg){
+        cout<<msg<<endl;
+    }
+    Client clientO("127.0.0.1", 8000);
+    try {
+        clientO.connectToServer();
     }catch (const char* msg){
         cout<<msg<<endl;
     }
 }
-/*
+*/
     ConsoleDisplay consoleDisplay;
     int playerChoice;
     Board board(8);
@@ -23,4 +30,4 @@ int main() {
     GameLevel gameLevel(board,playerChoice,consoleDisplay);
     gameLevel.play();
 }
-*/
+

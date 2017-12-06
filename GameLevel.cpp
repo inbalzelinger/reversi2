@@ -1,18 +1,33 @@
 
 
+#include <unistd.h>
 #include "GameLevel.h"
-#include "ConsoleLogic.h"
+#include "LocalVsRemote.h"
+#include "RemotePlayer.h"
 
 
 GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): playerChoice(playerChoice),board(&b)
-        ,consoleDisplay(&consoleDisplay){
+        ,consoleDisplay(&consoleDisplay) {
     this->blackPlayer = new ConsolePlayer(X);
-    if(playerChoice==1){
-    this->whitePlayer = new ConsolePlayer(O);
-    } else if(playerChoice==2){
-        this->whitePlayer= new AIPlayer(O);
-    } else if(playerChoice==3){
-    this->whitePlayer= new AIPlayer(O);
+    if (playerChoice == 1) {
+        this->whitePlayer = new ConsolePlayer(O);
+    } else if (playerChoice == 2) {
+        this->whitePlayer = new AIPlayer(O);
+    } else if (playerChoice == 3) {
+        Client *client = new Client("172.0.0.1", 8000);
+        client->connectToServer();
+        int symbol;
+        int n = read(client->getSocket(), &symbol, sizeof(symbol));
+        if (n == -1) {
+            cout << "ERROR" << endl;
+        }
+        if (symbol == 1) {
+            this->blackPlayer = new LocalVsRemote(X, client);
+            this->whitePlayer=new RemotePlayer(O);
+        } else if (symbol == 2) {
+            this->whitePlayer = new LocalVsRemote(O, client);
+            this->blackPlayer=new RemotePlayer(X);
+        }
     }
     this->logic = new ConsoleLogic();
 }

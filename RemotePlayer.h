@@ -1,0 +1,29 @@
+//
+// Created by inbal on 05/12/17.
+//
+
+#ifndef REVERSITESTS_REMOTEPLAYER_H
+#define REVERSITESTS_REMOTEPLAYER_H
+
+
+#include "Player.h"
+#include "Client.h"
+
+class RemotePlayer: public Player {
+
+private:
+    Client* client;
+
+public:
+    RemotePlayer(Symbol currentPlayer);
+    /**
+* function name: makeMove
+* makes one move at the play.
+**/
+
+    Point makeMove(vector<Point> possibleMoves , Board &b);
+
+};
+
+
+#endif //REVERSITESTS_REMOTEPLAYER_H
