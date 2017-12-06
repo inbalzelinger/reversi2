@@ -49,7 +49,7 @@ void Client::connectToServer() {
 
     }
     string msg;
-    int n=read(this->getSocket(),msg,sizeof(msg));
+    int n=read(this->getSocket(),&msg,sizeof(msg));
     if(n == -1) {
         throw "Error Reading msg to socket";
     }
