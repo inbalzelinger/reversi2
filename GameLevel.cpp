@@ -14,18 +14,18 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 2) {
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-        Client *client = new Client("172.0.0.1", 8000);
+        Client *client = new Client("127.0.0.1", 8000);
         client->connectToServer();
-        int symbol;
+        char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
-        cout<<symbol<<endl;
+        cout<<"you are "<<symbol<<endl;
         if (n == -1) {
             cout << "ERROR" << endl;
         }
-        if (symbol == 1) {
+        if (symbol == '1') {
             this->blackPlayer = new LocalVsRemote(X, client);
             this->whitePlayer=new RemotePlayer(O,client);
-        } else if (symbol == 2) {
+        } else if (symbol == '2') {
             this->whitePlayer = new LocalVsRemote(O, client);
             this->blackPlayer=new RemotePlayer(X,client);
         }
