@@ -48,14 +48,7 @@ void Client::connectToServer() {
         throw "Error connecting to server";
 
     }
-    string msg;
-    int n=read(this->getSocket(),&msg,sizeof(msg));
-    if(n == -1) {
-        throw "Error Reading msg to socket";
-    }
-    else{
-        cout<<msg<<endl;
-    }
+
     cout << "connected to server" << endl;
 }
 
