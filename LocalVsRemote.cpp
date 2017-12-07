@@ -29,7 +29,18 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
         }
     }
     possibleMoves.clear();
+    char msg[7];
 
-    client->sendMove(row,col);
+    char r = (char)row;
+
+    msg[0]= r;
+    cout << msg[0];
+
+    char c = (char)col;
+
+
+    msg[1]= c;
+    client->sendMove(msg);
+
     return (Point(row , col));
 }

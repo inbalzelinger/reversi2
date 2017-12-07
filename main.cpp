@@ -28,6 +28,10 @@ int main() {
     consoleDisplay.showMenu();
     cin >> playerChoice;
     GameLevel gameLevel(board,playerChoice,consoleDisplay);
-    gameLevel.play();
+    if(playerChoice==3){
+        gameLevel.playRemote();
+    } else {
+        gameLevel.play();
+    }
 }
 

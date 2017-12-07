@@ -11,21 +11,16 @@
 RemotePlayer::RemotePlayer(Symbol currentPlayer, Client* client) :Player(currentPlayer){
     this->client=client;
 }
-RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {
-    /*
-    this->client = new Client("127.0.0.1" , 8000);
-    try {
-        client->connectToServer();
-    }catch (const char* msg){
-        cout<<msg<<endl;
-    }*/
-}
+RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {}
+
+
+
 
 Point RemotePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
-    char buff[3];
+    char buff[7];
     read(client->getSocket() , buff , sizeof(buff));
     int row = buff[0];
-    int col = buff[2];
+    int col = buff[1];
     return (Point(row , col));
 }
 

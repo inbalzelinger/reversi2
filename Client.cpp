@@ -48,23 +48,14 @@ void Client::connectToServer() {
         throw "Error connecting to server";
 
     }
-    string msg;
-    int n=read(this->getSocket(),&msg,sizeof(msg));
-    if(n == -1) {
-        throw "Error Reading msg to socket";
-    }
-    else{
-        cout<<msg<<endl;
-    }
+
     cout << "connected to server" << endl;
 }
 
-int Client::sendMove(int arg1, int arg2) {
-    int n = write(clientSocket , &arg1 , sizeof(arg1));
-    if(n == -1) {
-        throw "Error writing x to socket";
-    }
-    n = write(clientSocket , &arg2 , sizeof(arg2));
+
+
+int Client::sendMove(char msg[7]) {
+    int n = write(clientSocket , msg , sizeof(msg));
     if(n == -1) {
         throw "Error writing x to socket";
     }

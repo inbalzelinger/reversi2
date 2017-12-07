@@ -10,7 +10,7 @@ class Client {
 public:
     Client(const char* serverIp , int serverPort);
     void  connectToServer();
-    int sendMove(int arg1, int arg2);
+    int sendMove(char msg[7]);
 
     int getSocket();
 

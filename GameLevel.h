@@ -18,6 +18,7 @@ private:
     ConsoleLogic* logic;
     int playerChoice;
     ConsoleDisplay* consoleDisplay;
+    Symbol localPlayer;
 
 
     /**
@@ -69,8 +70,10 @@ public:
 **/
 
     void play();
-
-
+    /**
+     * play against remote player
+     */
+    void playRemote();
 };
 
 
