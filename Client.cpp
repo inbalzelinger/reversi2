@@ -59,8 +59,13 @@ int Client::sendMove(char msg[7]) {
     if(n == -1) {
         throw "Error writing x to socket";
     }
-
 }
+
+
+
+
+
+
     int Client::getSocket() {
     return this->clientSocket;
 }
