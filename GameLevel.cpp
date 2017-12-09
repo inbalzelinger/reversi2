@@ -79,7 +79,6 @@ void GameLevel::playRemote() {
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
             //send End to server.
-
             break;
         }
     }
