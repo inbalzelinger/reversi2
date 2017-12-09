@@ -43,7 +43,6 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
         char r = (char)row;
 
         msg[0]= r;
-        cout << msg[0];
 
         char c = (char)col;
 
