@@ -53,9 +53,8 @@ void GameLevel::playRemote() {
             }
             p = blackPlayer->makeMove(optionsBlack, *this->board);
 
-            if (p == notValid) {
-                ;
-            } else {
+            if (!(p == notValid)) {
+
                 this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
                 this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
             }
@@ -71,9 +70,7 @@ void GameLevel::playRemote() {
             }
             p = whitePlayer->makeMove(optionsWhite, *this->board);
 
-            if (p == notValid) {
-                ;
-            } else {
+            if (!(p == notValid)) {
                 this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
                 this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
             }
