@@ -36,7 +36,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 }
 
 void GameLevel::playRemote() {
-    char noMoveMassage[7]="NoMove";
+    char noMoveMassage[7]="NoMov";
     int numX = 0;
     int numO = 0;
     Point p;
@@ -54,13 +54,15 @@ void GameLevel::playRemote() {
             p = blackPlayer->makeMove(optionsBlack, *this->board);
 
             if (!(p == notValid)) {
-
                 this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
                 this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+                if(localPlayer==O){
+                    consoleDisplay->showRemotePlayerMove(X,p);
+                }
             }
         }
         else{
-            write(this->client->getSocket(),noMoveMassage,sizeof(noMoveMassage));
+            client->sendMove(noMoveMassage);
 
         }
         optionsWhite = this->turn(this->whitePlayer->getSign());
@@ -69,14 +71,16 @@ void GameLevel::playRemote() {
                 consoleDisplay->showStepsOptions(optionsWhite);
             }
             p = whitePlayer->makeMove(optionsWhite, *this->board);
-
             if (!(p == notValid)) {
                 this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
                 this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+                if(localPlayer==X){
+                    consoleDisplay->showRemotePlayerMove(O,p);
+                }
             }
         }
         else{
-            write(this->client->getSocket(),noMoveMassage,sizeof(noMoveMassage));
+            client->sendMove(noMoveMassage);
         }
 
         if (optionsBlack.empty() && optionsWhite.empty()||

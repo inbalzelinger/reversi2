@@ -24,7 +24,7 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
         cout<<board<<endl;
         cout << symbolToPrint <<" its your turn" << endl;
     } else {
-        cout<<symbolToPrint<<":"<<"no possible moves for you"<<endl;
+        cout<<"no possible moves for "<<symbolToPrint<<endl;
     }
 }
 
@@ -53,11 +53,29 @@ void ConsoleDisplay::showStepsOptions(vector<Point> moves) {
     cout <<endl << "enter your move row Space then col" << endl;
 }
 void ConsoleDisplay::remotePlayerTurnMassege(Symbol symbol) {
-    cout<<"its "<<symbol<<" turn"<<endl;
+    char symbolToPrint;
+    switch (symbol){
+        case X:
+            symbolToPrint='X';
+            break;
+        case O:
+            symbolToPrint='O';
+            break;
+    }
+    cout<<"its "<<symbolToPrint<<" turn"<<endl;
 
 }
 void ConsoleDisplay::showRemotePlayerMove(Symbol symbol,Point point){
-    cout<<symbol<<" played "<<point<<endl;
+    char symbolToPrint;
+    switch (symbol){
+        case X:
+            symbolToPrint='X';
+            break;
+        case O:
+            symbolToPrint='O';
+            break;
+    }
+    cout<<symbolToPrint<<" played "<<point<<endl;
 }
 
 
