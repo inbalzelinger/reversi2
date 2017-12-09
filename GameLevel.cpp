@@ -78,7 +78,8 @@ void GameLevel::playRemote() {
 
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
-            //send End to server.
+            char endmsg[7]="END";
+            write(this->client->getSocket(),&endmsg,sizeof(endmsg));
             break;
         }
     }

@@ -8,6 +8,7 @@
 #include "ConsoleLogic.h"
 #include "AIPlayer.h"
 #include "ConsoleDisplay.h"
+#include "Client.h"
 
 class GameLevel {
 
@@ -19,6 +20,7 @@ private:
     int playerChoice;
     ConsoleDisplay* consoleDisplay;
     Symbol localPlayer;
+    Client* client;
 
 
     /**

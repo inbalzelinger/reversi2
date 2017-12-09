@@ -19,6 +19,8 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
             break;
 
     }
+
+
     if (isPossibleToMove) {
         cout<<board<<endl;
         cout << symbolToPrint <<" its your turn" << endl;
