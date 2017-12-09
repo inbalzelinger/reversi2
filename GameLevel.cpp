@@ -53,7 +53,6 @@ void GameLevel::playRemote() {
             this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
             this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         }
-
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
             if (localPlayer==O) {
@@ -68,10 +67,11 @@ void GameLevel::playRemote() {
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
             //send End to server.
 
-
             break;
         }
     }
+
+
     numX = board->count(this->blackPlayer->getSign());
     numO = board->count(this->whitePlayer->getSign());
     cout<<*board;

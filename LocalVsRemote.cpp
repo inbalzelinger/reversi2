@@ -8,14 +8,16 @@ LocalVsRemote::LocalVsRemote(Symbol currentPlayer) : Player(currentPlayer) {}
 
 LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client *client): Player(currentPlayer) {
     this->client=client;
-
 }
+
+
 
 Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
     if (possibleMoves.empty()) {
         char msg[7] = {"NoMove"};
         client->sendMove(msg);
-
+        Point p(0 , 0);
+        return p;
 
     } else {
         int col = -1, row = -1;
