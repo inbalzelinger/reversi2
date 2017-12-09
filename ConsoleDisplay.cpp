@@ -1,7 +1,6 @@
 
 
 #include "ConsoleDisplay.h"
-#include "iostream"
 using namespace std;
 
 void ConsoleDisplay::showMenu() {
@@ -52,6 +51,13 @@ void ConsoleDisplay::showStepsOptions(vector<Point> moves) {
         cout << moves[i] << " ";
     }
     cout <<endl << "enter your move row Space then col" << endl;
+}
+void ConsoleDisplay::remotePlayerTurnMassege(Symbol symbol) {
+    cout<<"its "<<symbol<<" turn"<<endl;
+
+}
+void ConsoleDisplay::showRemotePlayerMove(Symbol symbol,Point point){
+    cout<<symbol<<" played "<<point<<endl;
 }
 
 

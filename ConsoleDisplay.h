@@ -25,7 +25,7 @@ public:
 * @param board , isPossibleToMove , playerSymbol
 * @return void.
 **/
-    void showTurnMessage(Symbol playerSymbol,bool isPossibleToMove,Board &board);
+    void showTurnMessage(Symbol playerSymbol, bool isPossibleToMove, Board &board);
 
     /**
 * function name: showEndingStatus
@@ -34,7 +34,7 @@ public:
 * @return void.
 **/
 
-    void showEndingStatus(Symbol winnerSymbol,int points);
+    void showEndingStatus(Symbol winnerSymbol, int points);
 
 
     /**
@@ -45,7 +45,8 @@ public:
 **/
 
     void showStepsOptions(vector<Point> moves);
+
+    void remotePlayerTurnMassege(Symbol symbol);
+    void showRemotePlayerMove(Symbol symbol,Point point);
 };
-
-
 #endif //UNTITLED2_CONSOLEDISPLAY_H

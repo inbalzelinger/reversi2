@@ -13,14 +13,7 @@ LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client *client): Player(curre
 
 
 Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
-    char msg[7] = {"NoMove"};
-    if (possibleMoves.empty()) {
-        cout<<msg[0]<<msg[1]<<msg[2]<<msg[3];
-        client->sendMove(msg);
-        Point p(0 , 0);
-        return p;
 
-    } else {
         int col = -1, row = -1;
         int legalMoves = 0;
         while (legalMoves == 0) {
@@ -39,7 +32,7 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
             }
         }
         possibleMoves.clear();
-
+        char msg[7];
         char r = (char)row;
 
         msg[0]= r;
@@ -51,5 +44,5 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
         return (Point(row , col));
     }
 
-}
+
 

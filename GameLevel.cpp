@@ -14,7 +14,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 2) {
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-        Client *client = new Client("127.0.0.1", 8014);
+        Client *client = new Client("127.0.0.1", 8005);
         client->connectToServer();
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
@@ -36,6 +36,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 }
 
 void GameLevel::playRemote() {
+    char noMoveMassage[7]="NoMove";
     int numX = 0;
     int numO = 0;
     Point p;
@@ -59,6 +60,10 @@ void GameLevel::playRemote() {
                 this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
             }
         }
+        else{
+            write(this->client->getSocket(),noMoveMassage,sizeof(noMoveMassage));
+
+        }
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
             if (localPlayer==O) {
@@ -73,11 +78,14 @@ void GameLevel::playRemote() {
                 this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
             }
         }
+        else{
+            write(this->client->getSocket(),noMoveMassage,sizeof(noMoveMassage));
+        }
 
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
-            char endmsg[7]="END";
-            write(this->client->getSocket(),&endmsg,sizeof(endmsg));
+            char endMassage[7]="END";
+            write(this->client->getSocket(),&endMassage,sizeof(endMassage));
             break;
         }
     }
