@@ -15,6 +15,7 @@ public:
     LocalVsRemote(Symbol currentPlayer,Client* client);
 
     Point makeMove(vector<Point> possibleMoves , Board &b);
+    void sendEmpty();
 
 private:
     Client *client;

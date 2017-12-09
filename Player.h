@@ -34,10 +34,14 @@ public:
 
     virtual Point makeMove(vector<Point> possibleMoves , Board &b) = 0;
 
-    /**
-* function name: getSigh
-* return the sigh of th
-**/
+
+   // virtual void sendEmpty() = 0;
+
+
+        /**
+    * function name: getSigh
+    * return the sigh of th
+    **/
 
     Symbol getSign();
 

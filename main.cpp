@@ -24,7 +24,7 @@ int main() {
 */
     ConsoleDisplay consoleDisplay;
     int playerChoice;
-    Board board(8);
+    Board board(4);
     consoleDisplay.showMenu();
     cin >> playerChoice;
     GameLevel gameLevel(board,playerChoice,consoleDisplay);

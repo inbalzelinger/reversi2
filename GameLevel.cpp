@@ -49,28 +49,26 @@ void GameLevel::playRemote() {
             if (localPlayer==X) {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
-
-
-
             p = blackPlayer->makeMove(optionsBlack, *this->board);
             this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
             this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         }
-
-
 
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
             if (localPlayer==O) {
                 consoleDisplay->showStepsOptions(optionsWhite);
             }
-
             p = whitePlayer->makeMove(optionsWhite, *this->board);
             this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
             this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
         }
+
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
+            //send End to server.
+
+
             break;
         }
     }
