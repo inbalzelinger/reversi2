@@ -14,10 +14,16 @@ Board::Board(int size): size(size) {
             this->board[i][j] = empty;
         }
     }
-    this->board[size / 2][size / 2] = O;
-    this->board[(size / 2) - 1][(size / 2) - 1] = O;
-    this->board[size / 2][(size / 2) - 1] = X;
-    this->board[(size / 2) - 1][size / 2] = X;
+
+    this->board[0][0] = O;
+    this->board[0][1] = X;
+    this->board[1][0] = X;
+
+
+    //this->board[size / 2][size / 2] = O;
+    //this->board[(size / 2) - 1][(size / 2) - 1] = O;
+    //this->board[size / 2][(size / 2) - 1] = X;
+    //this->board[(size / 2) - 1][size / 2] = X;
 }
 
 
