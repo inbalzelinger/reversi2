@@ -50,7 +50,6 @@ void GameLevel::playRemote() {
             if (localPlayer==X) {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
-
             p = blackPlayer->makeMove(optionsBlack, *this->board);
 
             if (p == notValid) {
