@@ -14,7 +14,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 2) {
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-        Client *client = new Client("127.0.0.1", 8013);
+        Client *client = new Client("127.0.0.1", 8014);
         client->connectToServer();
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
@@ -50,7 +50,6 @@ void GameLevel::playRemote() {
             if (localPlayer==X) {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
-
 
             p = blackPlayer->makeMove(optionsBlack, *this->board);
 

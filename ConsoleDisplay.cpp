@@ -28,6 +28,7 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
         cout<<symbolToPrint<<":"<<"no possible moves for you"<<endl;
     }
 }
+
 void ConsoleDisplay::showEndingStatus(Symbol winnerSymbol,int points) {
     char symbolToPrint;
     switch (winnerSymbol){
