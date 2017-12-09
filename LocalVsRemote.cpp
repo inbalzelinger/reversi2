@@ -14,6 +14,9 @@ LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client *client): Player(curre
 
 Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
     char msg[7] = {"NoMove"};
+    cout<<msg[0]<<msg[1]<<msg[2]<<msg[3];
+
+
     if (possibleMoves.empty()) {
         cout<<msg[0]<<msg[1]<<msg[2]<<msg[3];
         client->sendMove(msg);
