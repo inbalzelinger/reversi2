@@ -39,19 +39,27 @@ void GameLevel::playRemote() {
     int numX = 0;
     int numO = 0;
     Point p;
+    Point notValid(0 , 0);
+
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
     while (board->count(this->blackPlayer->getSign()) != 0 &&
            board->count(this->whitePlayer->getSign()) != 0) {
         optionsBlack = this->turn(this->blackPlayer->getSign());
-
         if (!optionsBlack.empty()) {
             if (localPlayer==X) {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
+
+
             p = blackPlayer->makeMove(optionsBlack, *this->board);
-            this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
-            this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+
+            if (p == notValid) {
+                ;
+            } else {
+                this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
+                this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+            }
         }
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
@@ -59,14 +67,18 @@ void GameLevel::playRemote() {
                 consoleDisplay->showStepsOptions(optionsWhite);
             }
             p = whitePlayer->makeMove(optionsWhite, *this->board);
-            this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
-            this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+
+            if (p == notValid) {
+                ;
+            } else {
+                this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
+                this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
+            }
         }
 
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
             //send End to server.
-
             break;
         }
     }
