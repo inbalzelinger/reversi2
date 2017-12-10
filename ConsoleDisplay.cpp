@@ -51,17 +51,21 @@ void ConsoleDisplay::showStepsOptions(vector<Point> moves) {
     cout <<endl << "enter your move row Space then col" << endl;
 }
 
-void ConsoleDisplay::showRemotePlayerMove(Symbol symbol,Point point){
+void ConsoleDisplay::showRemotePlayerMove(Symbol symbol,Point point) {
     char symbolToPrint;
-    switch (symbol){
+    switch (symbol) {
         case X:
-            symbolToPrint='X';
+            symbolToPrint = 'X';
             break;
         case O:
-            symbolToPrint='O';
+            symbolToPrint = 'O';
             break;
     }
-    cout<<symbolToPrint<<" played "<<point<<endl;
+    if (point == Point(0, 0)) {
+        cout << symbolToPrint << " didn't move" << endl;
+    } else {
+        cout << symbolToPrint << " played " << point << endl;
+    }
 }
 
 void ConsoleDisplay::firstConnectionMassage() {
@@ -77,7 +81,7 @@ void  ConsoleDisplay::whoAmIMassage(char symbol){
             symbolToPrint = 'O';
             break;
     }
-    cout<<"you are "<<symbol<<endl;
+    cout<<"you are "<<symbolToPrint<<endl;
 }
 
 
