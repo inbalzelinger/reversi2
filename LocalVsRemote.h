@@ -12,7 +12,7 @@
 class LocalVsRemote: public Player {
 public:
     LocalVsRemote(Symbol currentPlayer);
-    LocalVsRemote(Symbol currentPlayer,Client* client);
+    LocalVsRemote(Symbol currentPlayer,Client &client);
 
     Point makeMove(vector<Point> possibleMoves , Board &b);
     void sendEmpty();

@@ -16,10 +16,7 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
         case O:
             symbolToPrint='O';
             break;
-
     }
-
-
     if (isPossibleToMove) {
         cout<<board<<endl;
         cout << symbolToPrint <<" its your turn" << endl;
@@ -27,6 +24,7 @@ void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,
         cout<<"no possible moves for "<<symbolToPrint<<endl;
     }
 }
+
 
 void ConsoleDisplay::showEndingStatus(Symbol winnerSymbol,int points) {
     char symbolToPrint;

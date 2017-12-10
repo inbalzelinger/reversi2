@@ -23,12 +23,12 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
             cout << "ERROR READING THE SYMBOL" << endl;
         }
         if (symbol == '1') {
-            this->blackPlayer = new LocalVsRemote(X, client);
-            this->whitePlayer=new RemotePlayer(O,client);
+            this->blackPlayer = new LocalVsRemote(X, *client);
+            this->whitePlayer=new RemotePlayer(O, *client);
             localPlayer=X;
         } else if (symbol == '2') {
-            this->whitePlayer = new LocalVsRemote(O, client);
-            this->blackPlayer=new RemotePlayer(X,client);
+            this->whitePlayer = new LocalVsRemote(O, *client);
+            this->blackPlayer=new RemotePlayer(X, *client);
             localPlayer=O;
         }
     }
@@ -52,7 +52,6 @@ void GameLevel::playRemote() {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
             p = blackPlayer->makeMove(optionsBlack, *this->board);
-
             if (!(p == notValid)) {
                 this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
                 this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
@@ -62,8 +61,8 @@ void GameLevel::playRemote() {
             }
         }
         else{
-            client->sendMove(noMoveMassage);
-
+            //client->sendMove(noMoveMassage);
+            p = blackPlayer->makeMove(optionsBlack, *this->board);
         }
         optionsWhite = this->turn(this->whitePlayer->getSign());
         if (!optionsWhite.empty()) {
@@ -80,13 +79,18 @@ void GameLevel::playRemote() {
             }
         }
         else{
-            client->sendMove(noMoveMassage);
-        }
+            //client->sendMove(noMoveMassage);
 
+            p = whitePlayer->makeMove(optionsWhite, *this->board);
+        }
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
             char endMassage[7]="END";
-            write(this->client->getSocket(),&endMassage,sizeof(endMassage));
+            cout<<"endend";
+
+            cout<<"the socket:  "<<this->client->getSocket();
+
+            write(this->client->getSocket(), endMassage, sizeof(endMassage));
             break;
         }
     }
