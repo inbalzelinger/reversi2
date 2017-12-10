@@ -14,9 +14,9 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 2) {
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-        client = new Client("127.0.0.1", 8005);
-        client->connectToServer();
 
+        client = new Client("127.0.0.1", 8015);
+        client->connectToServer();
 
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
