@@ -17,6 +17,11 @@ Client::Client(const char *serverIp, int serverPort): serverIP(serverIp) ,
 serverPort(serverPort) , clientSocket(0){
 }
 
+Client::~Client() {
+    //delete this->serverIP;
+}
+
+
 void Client::connectToServer() {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 

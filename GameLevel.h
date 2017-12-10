@@ -21,7 +21,6 @@ private:
     ConsoleDisplay* consoleDisplay;
     Symbol localPlayer;
     Client* client;
-    const char* ip;
 
 
     /**

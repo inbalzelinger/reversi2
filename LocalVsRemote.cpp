@@ -8,7 +8,6 @@ LocalVsRemote::LocalVsRemote(Symbol currentPlayer) : Player(currentPlayer) {}
 
 LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client &client): Player(currentPlayer) , client(&client)  {
     ;
-   // this.client=client;
 }
 
 

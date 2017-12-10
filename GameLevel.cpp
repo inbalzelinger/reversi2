@@ -25,25 +25,27 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         getline(inFile , ip);
         getline(inFile , port);
 
+
+
         const char *ipCh = ip.c_str();
 
         inFile.close();
 
 
-        client = new Client(ipCh, atoi(port.c_str()));
+        client = new Client(ipCh , atoi(port.c_str()));
 
         client->connectToServer();
 
         char symbol;
-        int n = read(client->getSocket(), &symbol, sizeof(symbol));
-        consoleDisplay.whoAmIMassage(symbol);
-        if (n == -1) {
-            cout << "ERROR READING THE SYMBOL" << endl;
-        }
-        if (symbol == '1') {
-            consoleDisplay.firstConnectionMassage();
-        }
-        n = read(client->getSocket(), &symbol, sizeof(symbol));
+      //  int n = read(client->getSocket(), &symbol, sizeof(symbol));
+       // consoleDisplay.whoAmIMassage(symbol);
+        //if (n == -1) {
+          //  cout << "ERROR READING THE SYMBOL" << endl;
+       // }
+       // if (symbol == '1') {
+         //   consoleDisplay.firstConnectionMassage();
+       // }
+		int n = read(client->getSocket(), &symbol, sizeof(symbol));
         if (symbol == '1') {
             this->blackPlayer = new LocalVsRemote(X, *client);
             this->whitePlayer=new RemotePlayer(O, *client);
@@ -133,7 +135,7 @@ GameLevel::~GameLevel() {
     delete blackPlayer;
     delete whitePlayer;
     delete logic;
-    //delete client;
+    delete client;
 
 }
 

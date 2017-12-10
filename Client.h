@@ -9,7 +9,9 @@
 class Client {
 public:
     Client(const char* serverIp , int serverPort);
-    void  connectToServer();
+	~Client();
+
+	void  connectToServer();
     int sendMove(char msg[7]);
     int getSocket();
 
