@@ -18,18 +18,20 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 3) {
 
 
-        string port , ip;
+       string port , ip;
         ifstream inFile;
         /////take off the ../
         inFile.open("settings.txt");
         getline(inFile , ip);
         getline(inFile , port);
 
-        const char *ipCh = ip.c_str();
+
+		this->ip = ip.c_str();
+
+        //const char *ipCh = ip.c_str();
         inFile.close();
 
-
-        this->client = new Client(ipCh, atoi(port.c_str()));
+		this->client = new Client(this->ip, atoi(port.c_str()));
        this->client->connectToServer();
 
         char symbol;
@@ -50,6 +52,7 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         }
     }
     this->logic = new ConsoleLogic();
+
 }
 
 void GameLevel::playRemote() {
@@ -124,6 +127,8 @@ void GameLevel::playRemote() {
 
 
 GameLevel::~GameLevel() {
+	delete this->ip;
+
 	delete client;
     delete blackPlayer;
     delete whitePlayer;
