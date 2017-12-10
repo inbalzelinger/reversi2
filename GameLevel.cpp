@@ -26,13 +26,11 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         getline(inFile , port);
 
         const char *ipCh = ip.c_str();
-
         inFile.close();
 
 
-        client = new Client(ipCh, atoi(port.c_str()));
-
-        client->connectToServer();
+        this->client = new Client(ipCh, atoi(port.c_str()));
+       this->client->connectToServer();
 
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
@@ -98,7 +96,6 @@ void GameLevel::playRemote() {
         }
         else{
             //client->sendMove(noMoveMassage);
-
             p = whitePlayer->makeMove(optionsWhite, *this->board);
         }
         if (optionsBlack.empty() && optionsWhite.empty()||
@@ -127,11 +124,10 @@ void GameLevel::playRemote() {
 
 
 GameLevel::~GameLevel() {
+	delete client;
     delete blackPlayer;
     delete whitePlayer;
     delete logic;
-    //delete client;
-
 }
 
 
