@@ -36,18 +36,12 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
+        consoleDisplay.whoAmIMassage(symbol);
         if (n == -1) {
             cout << "ERROR READING THE SYMBOL" << endl;
         }
-        consoleDisplay.whoAmIMassage(symbol);
         if (symbol == '1') {
             consoleDisplay.firstConnectionMassage();
-        }
-        n = read(client->getSocket(), &symbol, sizeof(symbol));
-        if (n == -1) {
-            cout << "ERROR READING THE SYMBOL" << endl;
-        }
-        if (symbol == '1') {
             this->blackPlayer = new LocalVsRemote(X, *client);
             this->whitePlayer=new RemotePlayer(O, *client);
             localPlayer=X;
@@ -136,7 +130,7 @@ GameLevel::~GameLevel() {
     delete blackPlayer;
     delete whitePlayer;
     delete logic;
-    delete client;
+    //delete client;
 
 }
 

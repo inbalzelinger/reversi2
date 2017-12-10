@@ -10,7 +10,7 @@ int main() {
 
     ConsoleDisplay consoleDisplay;
     int playerChoice;
-    Board board(4);
+    Board board(3);
     consoleDisplay.showMenu();
     cin >> playerChoice;
     GameLevel gameLevel(board,playerChoice,consoleDisplay);

@@ -11,7 +11,6 @@ public:
     Client(const char* serverIp , int serverPort);
     void  connectToServer();
     int sendMove(char msg[7]);
-
     int getSocket();
 
 private:
