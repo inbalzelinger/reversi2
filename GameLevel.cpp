@@ -10,10 +10,11 @@
 
 GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): playerChoice(playerChoice),board(&b)
         ,consoleDisplay(&consoleDisplay) {
-    this->blackPlayer = new ConsolePlayer(X);
     if (playerChoice == 1) {
+        this->blackPlayer = new ConsolePlayer(X);
         this->whitePlayer = new ConsolePlayer(O);
     } else if (playerChoice == 2) {
+        this->blackPlayer = new ConsolePlayer(X);
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
 
