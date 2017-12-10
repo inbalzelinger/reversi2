@@ -42,6 +42,9 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         }
         if (symbol == '1') {
             consoleDisplay.firstConnectionMassage();
+        }
+        n = read(client->getSocket(), &symbol, sizeof(symbol));
+        if (symbol == '1') {
             this->blackPlayer = new LocalVsRemote(X, *client);
             this->whitePlayer=new RemotePlayer(O, *client);
             localPlayer=X;
