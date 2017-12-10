@@ -18,23 +18,16 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 3) {
 
 
-
         string port , ip;
         ifstream inFile;
-
-        /////take of the ../
+        /////take off the ../
         inFile.open("../settings.txt");
-
         getline(inFile , ip);
         getline(inFile , port);
 
-
         const char *ipCh = ip.c_str();
 
-        cout<<*ipCh;
-
         inFile.close();
-
 
 
         client = new Client(ipCh, atoi(port.c_str()));
