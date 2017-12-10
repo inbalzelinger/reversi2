@@ -14,8 +14,10 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
     } else if (playerChoice == 2) {
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-        Client *client = new Client("127.0.0.1", 8005);
+        client = new Client("127.0.0.1", 8005);
         client->connectToServer();
+
+
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
         cout<<"you are "<<symbol<<endl;
@@ -85,11 +87,7 @@ void GameLevel::playRemote() {
         }
         if (optionsBlack.empty() && optionsWhite.empty()||
             (board->count(blackPlayer->getSign())+board->count(whitePlayer->getSign()))==board->getSize()*board->getSize()) {
-            char endMassage[7]="END";
-            cout<<"endend";
-
-            cout<<"the socket:  "<<this->client->getSocket();
-
+            char endMassage[7]={"E" "N" "D"};
             write(this->client->getSocket(), endMassage, sizeof(endMassage));
             break;
         }
@@ -116,6 +114,7 @@ GameLevel::~GameLevel() {
     delete blackPlayer;
     delete whitePlayer;
     delete logic;
+    //delete client;
 
 }
 
