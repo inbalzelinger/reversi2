@@ -1,6 +1,8 @@
 
 
 #include <unistd.h>
+#include <fstream>
+#include <cstdlib>
 #include "GameLevel.h"
 #include "LocalVsRemote.h"
 #include "RemotePlayer.h"
@@ -15,7 +17,28 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
 
-        client = new Client("127.0.0.1", 8015);
+
+
+        string port , ip;
+        ifstream inFile;
+
+        /////take of the ../
+        inFile.open("../settings.txt");
+
+        getline(inFile , ip);
+        getline(inFile , port);
+
+
+        const char *ipCh = ip.c_str();
+
+        cout<<*ipCh;
+
+        inFile.close();
+
+
+
+        client = new Client(ipCh, atoi(port.c_str()));
+
         client->connectToServer();
 
         char symbol;
