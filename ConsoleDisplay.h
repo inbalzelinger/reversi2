@@ -46,7 +46,20 @@ public:
 
     void showStepsOptions(vector<Point> moves);
 
-    void remotePlayerTurnMassege(Symbol symbol);
-    void showRemotePlayerMove(Symbol symbol,Point point);
+    /**
+     * print what move the other player played
+     * @param symbol
+     * @param point
+     */
+    void showRemotePlayerMove(Symbol symbol, Point point);
+
+    /**
+ * print massage to first client
+ */
+    void firstConnectionMassage();
+/**
+ * prints what is the player symbol;
+ */
+    void whoAmIMassage(char symbol);
 };
 #endif //UNTITLED2_CONSOLEDISPLAY_H

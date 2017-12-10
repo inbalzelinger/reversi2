@@ -36,11 +36,12 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 
         char symbol;
         int n = read(client->getSocket(), &symbol, sizeof(symbol));
-        cout<<"you are "<<symbol<<endl;
+        consoleDisplay.whoAmIMassage(symbol);
         if (n == -1) {
             cout << "ERROR READING THE SYMBOL" << endl;
         }
         if (symbol == '1') {
+            consoleDisplay.firstConnectionMassage();
             this->blackPlayer = new LocalVsRemote(X, *client);
             this->whitePlayer=new RemotePlayer(O, *client);
             localPlayer=X;
@@ -54,7 +55,6 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 }
 
 void GameLevel::playRemote() {
-    char noMoveMassage[7]="NoMov";
     int numX = 0;
     int numO = 0;
     Point p;
