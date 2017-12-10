@@ -6,13 +6,22 @@
 
 LocalVsRemote::LocalVsRemote(Symbol currentPlayer) : Player(currentPlayer) {}
 
-LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client *client): Player(currentPlayer) {
-    this->client=client;
+LocalVsRemote::LocalVsRemote(Symbol currentPlayer, Client &client): Player(currentPlayer) , client(&client)  {
+    ;
+   // this.client=client;
 }
 
 
 
 Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
+    char noMoveMassage[7]="NoMov";
+
+    if (possibleMoves.empty()) {
+        client->sendMove(noMoveMassage);
+        Point point;
+        return point;
+    }
+
 
         int col = -1, row = -1;
         int legalMoves = 0;

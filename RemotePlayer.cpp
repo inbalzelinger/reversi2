@@ -9,9 +9,11 @@
 #include "ConsoleLogic.h"
 #include "Client.h"
 
-RemotePlayer::RemotePlayer(Symbol currentPlayer, Client* client) :Player(currentPlayer){
-    this->client=client;
+RemotePlayer::RemotePlayer(Symbol currentPlayer, Client &client) :Player(currentPlayer) , client(&client){
+   ;
 }
+
+
 RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {}
 
 
