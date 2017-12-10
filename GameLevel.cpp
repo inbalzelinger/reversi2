@@ -33,25 +33,27 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
 
 		client = new Client(ipCh , atoi(port.c_str()));
 
-
-
 		client->connectToServer();
 
         char symbol;
-      //  int n = read(client->getSocket(), &symbol, sizeof(symbol));
-       // consoleDisplay.whoAmIMassage(symbol);
-        //if (n == -1) {
-          //  cout << "ERROR READING THE SYMBOL" << endl;
-       // }
-       // if (symbol == '1') {
-         //   consoleDisplay.firstConnectionMassage();
-       // }
-		int n = read(client->getSocket(), &symbol, sizeof(symbol));
+        int n = read(client->getSocket(), &symbol, sizeof(symbol));
+        if (n == -1) {
+            cout << "ERROR READING THE SYMBOL" << endl;
+        }
         if (symbol == '1') {
+            consoleDisplay.firstConnectionMassage();
+        }
+		n = read(client->getSocket(), &symbol, sizeof(symbol));
+        if (n == -1) {
+            cout << "ERROR READING THE SYMBOL" << endl;
+        }
+        if (symbol == '1') {
+            consoleDisplay.whoAmIMassage(symbol);
             this->blackPlayer = new LocalVsRemote(X, *client);
             this->whitePlayer=new RemotePlayer(O, *client);
             localPlayer=X;
         } else if (symbol == '2') {
+            consoleDisplay.whoAmIMassage(symbol);
             this->whitePlayer = new LocalVsRemote(O, *client);
             this->blackPlayer=new RemotePlayer(X, *client);
             localPlayer=O;
@@ -85,7 +87,6 @@ void GameLevel::playRemote() {
             }
         }
         else{
-            //client->sendMove(noMoveMassage);
             p = blackPlayer->makeMove(optionsBlack, *this->board);
         }
         optionsWhite = this->turn(this->whitePlayer->getSign());
@@ -103,7 +104,6 @@ void GameLevel::playRemote() {
             }
         }
         else{
-            //client->sendMove(noMoveMassage);
 
             p = whitePlayer->makeMove(optionsWhite, *this->board);
         }

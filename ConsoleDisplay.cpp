@@ -37,7 +37,7 @@ void ConsoleDisplay::showEndingStatus(Symbol winnerSymbol,int points) {
             break;
     }
     if (winnerSymbol!=empty){
-        cout<< symbolToPrint <<" you win with: "<<points<<" points" <<endl;
+        cout<< symbolToPrint <<" wins with: "<<points<<" points!" <<endl;
     } else {
         cout<<"its a tie" <<endl;
     }
