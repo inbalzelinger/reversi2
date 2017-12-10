@@ -65,7 +65,6 @@ int Client::sendMove(char msg[7]) {
 
 
 
-
     int Client::getSocket() {
     return this->clientSocket;
 }

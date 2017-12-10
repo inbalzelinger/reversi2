@@ -29,7 +29,7 @@ ConsolePlayer.o: ConsolePlayer.cpp ConsolePlayer.h
 	g++ -c ConsolePlayer.cpp
 
 LocalVsRemote.o: LocalVsRemote.cpp LocalVsRemote.h
-    g++ -c LocalVsRemote.cpp
+	g++ -c LocalVsRemote.cpp
 
 RemotePlayer.o: RemotePlayer.cpp RemotePlayer.h
 	g++ -c RemotePlayer.cpp
