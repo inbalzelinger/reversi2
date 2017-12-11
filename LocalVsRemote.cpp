@@ -40,7 +40,7 @@ Point LocalVsRemote::makeMove(vector<Point> possibleMoves , Board &b) {
             }
         }
         possibleMoves.clear();
-        char msg[7];
+        char msg[MSGSIZE];
         char r = (char)row;
 
         msg[0]= r;

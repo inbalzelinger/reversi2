@@ -5,7 +5,7 @@
 #ifndef REVERSITESTS_CLIENT_H
 #define REVERSITESTS_CLIENT_H
 
-
+#define MSGSIZE 7
 class Client {
 public:
 	/**
@@ -24,7 +24,7 @@ public:
 	 * @param msg
 	 * @return
 	 */
-    int sendMove(char msg[7]);
+    int sendMove(char msg[MSGSIZE]);
 	/**
 	 * return the socket
 	 * @return client socket

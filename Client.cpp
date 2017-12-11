@@ -10,7 +10,6 @@
 #include <netdb.h>
 #include <string.h>
 #include <unistd.h>
-
 using namespace std;
 
 Client::Client(const char *serverIp, int serverPort): serverIP(serverIp) ,
@@ -59,8 +58,8 @@ void Client::connectToServer() {
 
 
 
-int Client::sendMove(char msg[7]) {
-    int n = write(clientSocket , msg , sizeof(msg));
+int Client::sendMove(char msg[MSGSIZE]) {
+    int n = write(clientSocket , msg , sizeof(&msg));
     if(n == -1) {
         throw "Error writing x to socket";
     }

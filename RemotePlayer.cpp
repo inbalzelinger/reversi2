@@ -20,7 +20,7 @@ RemotePlayer::RemotePlayer(Symbol currentPlayer) : Player(currentPlayer) {}
 
 
 Point RemotePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
-    char buff[7];
+    char buff[MSGSIZE];
     read(client->getSocket() , buff , sizeof(buff));
     if(strcmp(buff,"NoMove")== 0){
         return Point(0,0);
