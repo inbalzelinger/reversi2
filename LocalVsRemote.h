@@ -11,11 +11,20 @@
 
 class LocalVsRemote: public Player {
 public:
+    /**
+     * constructors
+     * @param currentPlayer
+     */
     LocalVsRemote(Symbol currentPlayer);
     LocalVsRemote(Symbol currentPlayer,Client &client);
-
+/**
+ * virtual method implementation
+ * @param possibleMoves
+ * @param b
+ * @return point of the move
+ */
     Point makeMove(vector<Point> possibleMoves , Board &b);
-    void sendEmpty();
+
 
 private:
     Client *client;

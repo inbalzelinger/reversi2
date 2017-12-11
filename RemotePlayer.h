@@ -15,9 +15,16 @@ private:
     Client* client;
 
 public:
+    /**
+     * constructor
+     * @param currentPlayer
+     */
     RemotePlayer(Symbol currentPlayer);
 
-
+    /**
+     * constructor
+     * @param currentPlayer
+     */
     RemotePlayer(Symbol currentPlayer, Client &client);
     /**
 * function name: makeMove
