@@ -76,6 +76,11 @@ public:
      * play against remote player
      */
     void playRemote();
+
+    void joinRemoteGame(string name);
+
+    void startRemoteGame(string name);
+
 };
 
 

@@ -13,8 +13,7 @@
 using namespace std;
 
 Client::Client(const char *serverIp, int serverPort): serverIP(serverIp) ,
-serverPort(serverPort) , clientSocket(0){
-}
+serverPort(serverPort) , clientSocket(0){}
 
 Client::~Client() {
     //delete this->serverIP;
@@ -23,7 +22,6 @@ Client::~Client() {
 
 void Client::connectToServer() {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
-
     if (clientSocket == -1) {
         throw "Error opening socket";
     }
@@ -44,15 +42,13 @@ void Client::connectToServer() {
 
     serverAddress.sin_family = AF_INET;
 
-    memcpy((char *) &serverAddress.sin_addr.s_addr, (char *) server->h_addr, server->h_length);
+    memcpy((char *) &serverAddress.sin_addr.s_addr, (char*) server->h_addr, server->h_length);
 
     serverAddress.sin_port = htons(serverPort);
 
     if (connect(clientSocket, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) == 1) {
         throw "Error connecting to server";
-
     }
-
     cout << "connected to server" << endl;
 }
 
@@ -64,7 +60,6 @@ int Client::sendMove(char msg[MSGSIZE]) {
         throw "Error writing x to socket";
     }
 }
-
 
 
 

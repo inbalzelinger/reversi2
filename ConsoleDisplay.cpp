@@ -7,6 +7,17 @@ void ConsoleDisplay::showMenu() {
     cout <<"enter 1 for local human player"<<endl<<"enter 2 for AI player"<<endl
          <<"enter 3 for remote player"<<endl;
 }
+
+
+void ConsoleDisplay::showRemoteMenu() {
+    cout <<"enter start <name> to start a new game"<<endl
+         <<"enter list_games to see the exist games"<<endl
+         <<"enter join <name> to join an exist game"<<endl
+            <<"enter play <x> <y> to play in your game"<<endl
+            <<"enter close <name> to close the game"<<endl;
+}
+
+
 void ConsoleDisplay::showTurnMessage(Symbol playerSymbol, bool isPossibleToMove,Board &board) {
     char symbolToPrint;
     switch (playerSymbol){

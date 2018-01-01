@@ -5,7 +5,7 @@
 #ifndef REVERSITESTS_CLIENT_H
 #define REVERSITESTS_CLIENT_H
 
-#define MSGSIZE 7
+#define MSGSIZE 20
 class Client {
 public:
 	/**

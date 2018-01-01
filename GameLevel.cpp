@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <fstream>
 #include <cstdlib>
+#include <sstream>
+#include <cstring>
 #include "GameLevel.h"
 #include "LocalVsRemote.h"
 #include "RemotePlayer.h"
@@ -17,57 +19,46 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         this->blackPlayer = new ConsolePlayer(X);
         this->whitePlayer = new AIPlayer(O);
     } else if (playerChoice == 3) {
-
-
-        string port , ip;
-
+        string port, ip;
         ifstream inFile;
         /////take off the ../
         inFile.open("../settings.txt");
-        getline(inFile , ip);
-        getline(inFile , port);
+        getline(inFile, ip);
+        getline(inFile, port);
         inFile.close();
-		const char *ipCh = ip.c_str();
-
-
-
-		client = new Client(ipCh , atoi(port.c_str()));
-
-		client->connectToServer();
-
-        char symbol;
-        int n = read(client->getSocket(), &symbol, sizeof(symbol));
-        if (n == -1) {
-            cout << "ERROR READING THE SYMBOL" << endl;
+        const char *ipCh = ip.c_str();
+        client = new Client(ipCh, atoi(port.c_str()));
+        client->connectToServer();
+        consoleDisplay.showRemoteMenu();
+        vector<string> commandArgs;
+        string msg;
+        cin.ignore();
+        getline(cin, msg);
+        istringstream str(msg);
+        string commandName;
+        string tmp;
+        stringstream ss;
+        getline(str, commandName, ' ');
+        while (getline(str, tmp, ' ')) {
+            commandArgs.push_back(tmp);
         }
-        if (symbol == '1') {
-            consoleDisplay.firstConnectionMassage();
-        }
-		n = read(client->getSocket(), &symbol, sizeof(symbol));
-        if (n == -1) {
-            cout << "ERROR READING THE SYMBOL" << endl;
-        }
-        if (symbol == '1') {
-            consoleDisplay.whoAmIMassage(symbol);
-            this->blackPlayer = new LocalVsRemote(X, *client);
-            this->whitePlayer=new RemotePlayer(O, *client);
-            localPlayer=X;
-        } else if (symbol == '2') {
-            consoleDisplay.whoAmIMassage(symbol);
-            this->whitePlayer = new LocalVsRemote(O, *client);
-            this->blackPlayer=new RemotePlayer(X, *client);
-            localPlayer=O;
+        if (strcmp("start" , commandName.c_str()) == 0) {
+            cout<<commandArgs[0]<<endl;
+            this->startRemoteGame(commandArgs[0]);
+        } else if (strcmp("join" , commandName.c_str()) == 0) {
+            cout<<commandArgs[0]<<endl;
+            this->joinRemoteGame(commandArgs[0]);
         }
     }
-    this->logic = new ConsoleLogic();
 }
+
+
 
 void GameLevel::playRemote() {
     int numX = 0;
     int numO = 0;
     Point p;
     Point notValid(0 , 0);
-
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
     while (board->count(this->blackPlayer->getSign()) != 0 &&
@@ -114,8 +105,6 @@ void GameLevel::playRemote() {
             break;
         }
     }
-
-
     numX = board->count(this->blackPlayer->getSign());
     numO = board->count(this->whitePlayer->getSign());
     cout<<*board;
@@ -192,4 +181,43 @@ void GameLevel::play() {
     }
     consoleDisplay->showEndingStatus(winnerSymbol,winnerScore);
 }
+
+
+
+void GameLevel::joinRemoteGame(string name) {
+    char symbol;
+    //this->client->sendMove();
+
+    int n = read(client->getSocket(), &symbol, sizeof(symbol));
+    if (n == -1) {
+        cout << "ERROR READING THE SYMBOL" << endl;
+    }
+    if (symbol == '1') {
+        this->consoleDisplay->firstConnectionMassage();
+    }
+    n = read(client->getSocket(), &symbol, sizeof(symbol));
+    if (n == -1) {
+        cout << "ERROR READING THE SYMBOL" << endl;
+    }
+    if (symbol == '1') {
+        consoleDisplay->whoAmIMassage(symbol);
+        this->blackPlayer = new LocalVsRemote(X, *client);
+        this->whitePlayer=new RemotePlayer(O, *client);
+        localPlayer=X;
+    } else if (symbol == '2') {
+        consoleDisplay->whoAmIMassage(symbol);
+        this->whitePlayer = new LocalVsRemote(O, *client);
+        this->blackPlayer=new RemotePlayer(X, *client);
+        localPlayer=O;
+    }
+    this->logic = new ConsoleLogic();
+}
+
+
+void GameLevel::startRemoteGame(string name) {
+    char msg[20] = "start";
+    this->client->sendMove(msg);
+}
+
+
 

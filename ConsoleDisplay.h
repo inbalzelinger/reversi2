@@ -61,5 +61,7 @@ public:
  * prints what is the player symbol;
  */
     void whoAmIMassage(char symbol);
+
+    void showRemoteMenu();
 };
 #endif //UNTITLED2_CONSOLEDISPLAY_H
