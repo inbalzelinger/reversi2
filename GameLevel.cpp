@@ -29,32 +29,36 @@ GameLevel::GameLevel(Board &b,int playerChoice,ConsoleDisplay &consoleDisplay): 
         const char *ipCh = ip.c_str();
         client = new Client(ipCh, atoi(port.c_str()));
         client->connectToServer();
-        consoleDisplay.showRemoteMenu();
-        vector<string> commandArgs;
-        string msg;
-        cin.ignore();
-        getline(cin, msg);
-        istringstream str(msg);
-        string commandName;
-        string tmp;
-        stringstream ss;
-        getline(str, commandName, ' ');
-        while (getline(str, tmp, ' ')) {
-            commandArgs.push_back(tmp);
-        }
-        if (strcmp("start" , commandName.c_str()) == 0) {
-            cout<<commandArgs[0]<<endl;
-            this->startRemoteGame(commandArgs[0]);
-        } else if (strcmp("join" , commandName.c_str()) == 0) {
-            cout<<commandArgs[0]<<endl;
-            this->joinRemoteGame(commandArgs[0]);
-        }
     }
 }
 
 
 
+
+
 void GameLevel::playRemote() {
+    consoleDisplay->showRemoteMenu();
+    vector<string> commandArgs;
+    string msg;
+    cin.ignore();
+    getline(cin,msg);
+    istringstream str(msg);
+    string commandName;
+    string tmp;
+    stringstream ss;
+    getline(str, commandName, ' ');
+    cout<<commandName<<endl;
+    while (getline(str, tmp, ' ')) {
+        commandArgs.push_back(tmp);
+    }
+    if (strcmp("start" , commandName.c_str()) == 0) {
+        cout<<commandArgs[0]<<endl;
+        this->startRemoteGame(msg);
+    } else if (strcmp("join" , commandName.c_str()) == 0) {
+        cout<<commandArgs[0]<<endl;
+        this->joinRemoteGame(msg);
+    }
+
     int numX = 0;
     int numO = 0;
     Point p;
@@ -215,7 +219,8 @@ void GameLevel::joinRemoteGame(string name) {
 
 
 void GameLevel::startRemoteGame(string name) {
-    char msg[20] = "start";
+    char msg[20];
+    strcpy(msg , name.c_str());
     this->client->sendMove(msg);
 }
 

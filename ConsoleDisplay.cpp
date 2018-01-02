@@ -95,6 +95,11 @@ void  ConsoleDisplay::whoAmIMassage(char symbol){
     cout<<"you are "<<symbolToPrint<<endl;
 }
 
+//void ConsoleDisplay::remoteGameMenu() {
+//    cout <<"enter 'start' and a new game name to create a new game"<<endl;
+//    cout<<"enter 'list_games' to see games that you can join to"<<endl;
+//    cout<<"enter 'join' and a game name to join a game"<<endl;
+//}
 
 
 
