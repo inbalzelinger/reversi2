@@ -4,7 +4,8 @@
 using namespace std;
 
 void ConsoleDisplay::showMenu() {
-    cout <<"enter 1 for local human player"<<endl<<"enter 2 for AI player"<<endl
+    cout <<"enter 1 for local human player"<<endl
+         <<"enter 2 for AI player"<<endl
          <<"enter 3 for remote player"<<endl;
 }
 
@@ -12,9 +13,7 @@ void ConsoleDisplay::showMenu() {
 void ConsoleDisplay::showRemoteMenu() {
     cout <<"enter start <name> to start a new game"<<endl
          <<"enter list_games to see the exist games"<<endl
-         <<"enter join <name> to join an exist game"<<endl
-            <<"enter play <x> <y> to play in your game"<<endl
-            <<"enter close <name> to close the game"<<endl;
+         <<"enter join <name> to join an exist game"<<endl;
 }
 
 
@@ -95,11 +94,7 @@ void  ConsoleDisplay::whoAmIMassage(char symbol){
     cout<<"you are "<<symbolToPrint<<endl;
 }
 
-//void ConsoleDisplay::remoteGameMenu() {
-//    cout <<"enter 'start' and a new game name to create a new game"<<endl;
-//    cout<<"enter 'list_games' to see games that you can join to"<<endl;
-//    cout<<"enter 'join' and a game name to join a game"<<endl;
-//}
+
 
 
 
