@@ -105,10 +105,10 @@ void RemoteGameLevel::play()  {
 
 
 RemoteGameLevel::~RemoteGameLevel() {
-    delete blackPlayer;
-    delete whitePlayer;
-    delete logic;
-    delete client;
+  //  delete logic;
+   // delete client;
+  //  delete whitePlayer;
+  //  delete blackPlayer;
 
 }
 

@@ -64,6 +64,7 @@ bool RemoteGameFlow::join(string name) {
         cout << "ERROR READING THE SYMBOL" << endl;
         return false;
     }
+    cout<<"in join"<<symbol;
     RemoteGameLevel remoteGameLevel(*client,consoleDisplay,symbol);
     remoteGameLevel.play();
 }
@@ -74,20 +75,23 @@ bool RemoteGameFlow::start(string name) {
     char feedback;
     strcpy(msg, name.c_str());
     this->client->sendMove(msg);
-    int n = read(client->getSocket(), &feedback, sizeof(feedback));
-    cout<<"11";
-    if (feedback == '1') {
-        this->consoleDisplay.firstConnectionMassage();
 
+    int n = read(client->getSocket(), &feedback, sizeof(feedback));
+    if (n == -1) {
+        cout << "ERROR READING THE SYMBOL" << endl;
+    }
+    cout<<"1"<<endl;
+        if (feedback == '1') {
+        this->consoleDisplay.firstConnectionMassage();
         int n = read(client->getSocket(), &feedback, sizeof(feedback));
         cout << feedback;
 
         if (n == -1) {
             cout << "ERROR READING THE SYMBOL" << endl;
         }
-        RemoteGameLevel remoteGameLevel(*client, consoleDisplay, 1);
+        RemoteGameLevel remoteGameLevel(*client, consoleDisplay, feedback);
         remoteGameLevel.play();
-        return ('1' == feedback);
+        return true;
     }
 }
 
