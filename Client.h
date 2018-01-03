@@ -24,12 +24,13 @@ public:
 	 * @param msg
 	 * @return
 	 */
-    int sendMove(char msg[MSGSIZE]);
+    int sendMove(char* msg);
 	/**
 	 * return the socket
 	 * @return client socket
 	 */
     int getSocket();
+	int readMove(char* msg);
 
 private:
     const char *serverIP;

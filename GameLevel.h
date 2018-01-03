@@ -66,20 +66,9 @@ public:
 
     GameLevel(const GameLevel &gameLevelToCopy);
 
-    /**
-* function name: play
-* the game logic. 'manage' the game.
-**/
-
     void play();
-    /**
-     * play against remote player
-     */
-    void playRemote();
 
-    void joinRemoteGame(string name);
 
-    void startRemoteGame(string name);
 
 };
 

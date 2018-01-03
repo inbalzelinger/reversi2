@@ -36,16 +36,11 @@ void Client::connectToServer() {
         cout<<h_errno<<endl;
         throw "Host is unreachable";
     }
-
     struct sockaddr_in serverAddress;
     bzero((char *) &address, sizeof(address));
-
     serverAddress.sin_family = AF_INET;
-
     memcpy((char *) &serverAddress.sin_addr.s_addr, (char*) server->h_addr, server->h_length);
-
     serverAddress.sin_port = htons(serverPort);
-
     if (connect(clientSocket, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) == 1) {
         throw "Error connecting to server";
     }
@@ -54,17 +49,28 @@ void Client::connectToServer() {
 
 
 
-int Client::sendMove(char msg[MSGSIZE]) {
-    int n = write(clientSocket , msg , sizeof(&msg));
+
+
+int Client::sendMove(char* msg) {
+    int n = write(clientSocket , msg , sizeof(msg));
     if(n == -1) {
         throw "Error writing x to socket";
     }
+    cout<<"sendmove";
+    return 1;
+}
+int Client::readMove(char* msg) {
+    int n = read(clientSocket, msg, sizeof(msg));
+    if (n == -1) {
+        throw "Error writing x to socket";
+    }
+    return 1;
 }
 
 
 
 
-    int Client::getSocket() {
+int Client::getSocket() {
     return this->clientSocket;
 }
 
