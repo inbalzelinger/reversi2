@@ -42,6 +42,7 @@ void RemoteGameLevel::play()  {
     int numO = 0;
     Point p;
     Point notValid(0 , 0);
+    Point exitServer(-1,-1);
     vector<Point> optionsBlack;
     vector<Point> optionsWhite;
     while (board->count(this->blackPlayer->getSign()) != 0 &&
@@ -52,6 +53,9 @@ void RemoteGameLevel::play()  {
                 consoleDisplay->showStepsOptions(optionsBlack);
             }
             p = blackPlayer->makeMove(optionsBlack, *this->board);
+            if(p==exitServer){
+                return;
+            }
             if (!(p == notValid)) {
                 this->board->addToBoard(p.getRow(), p.getCol(), blackPlayer->getSign());
                 this->logic->upside(blackPlayer->getSign(), p.getRow(), p.getCol(), *this->board);
@@ -69,6 +73,9 @@ void RemoteGameLevel::play()  {
                 consoleDisplay->showStepsOptions(optionsWhite);
             }
             p = whitePlayer->makeMove(optionsWhite, *this->board);
+            if(p==exitServer){
+                return;
+            }
             if (!(p == notValid)) {
                 this->board->addToBoard(p.getRow(), p.getCol(), whitePlayer->getSign());
                 this->logic->upside(whitePlayer->getSign(), p.getRow(), p.getCol(), *this->board);
