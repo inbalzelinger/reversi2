@@ -23,7 +23,7 @@ void RemoteGameFlow::startRemoteGame() {
     string port, ip;
     ifstream inFile;
     /////take off the ../
-    inFile.open("settings.txt");
+    inFile.open("../settings.txt");
     getline(inFile, ip);
     getline(inFile, port);
     inFile.close();
