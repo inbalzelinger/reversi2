@@ -30,11 +30,12 @@ void RemoteGameFlow::startRemoteGame() {
     const char *ipCh = ip.c_str();
     bool feedback = true;
     this->client = new Client(ipCh, atoi(port.c_str()));
-    this->client->connectToServer();
-    consoleDisplay.showRemoteMenu();
-    string msg;
     cin.ignore();
-    while (feedback) {
+
+    do {
+        this->client->connectToServer();
+        consoleDisplay.showRemoteMenu();
+        string msg;
         getline(cin, msg);
         istringstream iss(msg);
         string commandName;
@@ -44,12 +45,15 @@ void RemoteGameFlow::startRemoteGame() {
         cout << commandName << endl;
         if (strcmp("start", commandName.c_str()) == 0) {
             this->start(msg);
+            feedback = false;
         } else if (strcmp("join", commandName.c_str()) == 0) {
             this->join(msg);
+            feedback = false;
         } else if (strcmp("listGames", commandName.c_str()) == 0) {
             this->game_list(msg);
         }
-    }
+    } while (feedback) ;
+
 }
 
 
@@ -58,8 +62,9 @@ bool RemoteGameFlow::join(string name) {
     char symbol;
     char msg[20];
     strcpy(msg , name.c_str());
-    this->client->sendMove(msg);
-    int n = read(client->getSocket(), &symbol, sizeof(symbol));
+    //this->client->sendMove(msg);
+    int n = write(client->getSocket() , &msg , MSGSIZE);
+    n = read(client->getSocket(), &symbol, sizeof(char));
     if (n == -1) {
         cout << "ERROR READING THE SYMBOL" << endl;
         return false;
@@ -74,9 +79,10 @@ bool RemoteGameFlow::start(string name) {
     char msg[MSGSIZE];
     char feedback;
     strcpy(msg, name.c_str());
-    this->client->sendMove(msg);
-
-    int n = read(client->getSocket(), &feedback, sizeof(feedback));
+    cout<<"send in start: "<<msg<<endl;
+    //this->client->sendMove(msg);
+    int n = write(client->getSocket() , &msg , MSGSIZE);
+     n = read(client->getSocket(), &feedback, sizeof(feedback));
     if (n == -1) {
         cout << "ERROR READING THE SYMBOL" << endl;
     }
@@ -98,11 +104,17 @@ bool RemoteGameFlow::start(string name) {
 
 bool RemoteGameFlow::game_list(string name){
     char msg[MSGSIZE];
-    char feedback[MSGSIZE];
+    char feedback[100];
     strcpy(msg, name.c_str());
-    this->client->sendMove(msg);
-   this->client->readMove(feedback);
-    cout<<feedback<<endl;
+    //this->client->sendMove(msg);
+    int n = write(client->getSocket() , &msg , MSGSIZE);
+    //this->client->readMove(feedback);
+    n = read(client->getSocket(), feedback, 100);
+    cout<<"game list: "<<feedback<<endl;
+}
+
+RemoteGameFlow::~RemoteGameFlow() {
+    delete client;
 }
 
 

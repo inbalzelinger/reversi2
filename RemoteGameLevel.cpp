@@ -28,7 +28,7 @@ RemoteGameLevel:: RemoteGameLevel(Client &client,ConsoleDisplay &consoleDisplay,
         this->blackPlayer=new RemotePlayer(X, client);
         localPlayer=O;
     }
-    board = new Board(8);
+    board = new Board(3);
    logic = new ConsoleLogic;
 
 }
@@ -105,10 +105,10 @@ void RemoteGameLevel::play()  {
 
 
 RemoteGameLevel::~RemoteGameLevel() {
-  //  delete logic;
-   // delete client;
-  //  delete whitePlayer;
-  //  delete blackPlayer;
+    delete logic;
+    //delete client;
+    delete whitePlayer;
+    delete blackPlayer;
 
 }
 
