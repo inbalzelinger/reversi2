@@ -14,7 +14,9 @@ public:
 
 
     RemoteGameFlow(ConsoleDisplay consoleDisplay1);
+
     ~RemoteGameFlow();
+
     void startRemoteGame();
 
     bool join(string name);

@@ -41,7 +41,7 @@ void Client::connectToServer() {
     serverAddress.sin_family = AF_INET;
     memcpy((char *) &serverAddress.sin_addr.s_addr, (char*) server->h_addr, server->h_length);
     serverAddress.sin_port = htons(serverPort);
-    if (connect(clientSocket, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) == 1) {
+    if (connect(clientSocket, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) == -1) {
         throw "Error connecting to server";
     }
     cout << "connected to server" << endl;
