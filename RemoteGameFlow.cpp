@@ -32,7 +32,12 @@ void RemoteGameFlow::startRemoteGame() {
     this->client = new Client(ipCh, atoi(port.c_str()));
     cin.ignore();
     do {
-        this->client->connectToServer();
+		try {
+			this->client->connectToServer();
+		} catch (const char* error) {
+			cout<<error;
+			return;
+		}
         consoleDisplay.showRemoteMenu();
         string msg;
         getline(cin, msg);

@@ -78,7 +78,6 @@ void RemoteGameLevel::play()  {
             }
         }
         else{
-
             p = whitePlayer->makeMove(optionsWhite, *this->board);
         }
         if (optionsBlack.empty() && optionsWhite.empty()||
