@@ -56,7 +56,6 @@ int Client::sendMove(char* msg) {
     if(n == -1) {
         throw "Error writing x to socket";
     }
-    cout<<"sendmove";
     return 1;
 }
 int Client::readMove(char* msg) {

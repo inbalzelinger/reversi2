@@ -23,7 +23,7 @@ void RemoteGameFlow::startRemoteGame() {
     string port, ip;
     ifstream inFile;
     /////take off the ../
-    inFile.open("../settings.txt");
+    inFile.open("settings.txt");
     getline(inFile, ip);
     getline(inFile, port);
     inFile.close();
@@ -76,6 +76,10 @@ bool RemoteGameFlow::join(string name) {
         cout<<"can't find this game"<<endl;
         return false;
     }
+    if(symbol=='e'){
+        cout<<"server is close"<<endl;
+        exit(0);
+    }
     cout<<"in join"<<symbol;
     RemoteGameLevel remoteGameLevel(*client,consoleDisplay,symbol);
     remoteGameLevel.play();
@@ -93,13 +97,19 @@ bool RemoteGameFlow::start(string name) {
     if (n == -1) {
         cout << "ERROR READING THE SYMBOL" << endl;
     }
+    if(feedback=='e'){
+        cout<<"server is close"<<endl;
+        exit(0);
+    }
         if (feedback == '1') {
         this->consoleDisplay.firstConnectionMassage();
         int n = read(client->getSocket(), &feedback, sizeof(feedback));
-        cout << feedback;
-
         if (n == -1) {
             cout << "ERROR READING THE SYMBOL" << endl;
+        }
+        if(feedback=='e') {
+            cout << "server is close" << endl;
+            exit(0);
         }
         RemoteGameLevel remoteGameLevel(*client, consoleDisplay, feedback);
         remoteGameLevel.play();
@@ -120,8 +130,13 @@ bool RemoteGameFlow::game_list(string name){
     //this->client->sendMove(msg);
     int n = write(client->getSocket() , &msg , MSGSIZE);
     //this->client->readMove(feedback);
-    n = read(client->getSocket(), feedback, 150);
+    n = read(client->getSocket(), &feedback, 150);
+    if(feedback[0]=='e') {
+        cout << "server is close" << endl;
+        exit(0);
+    }
     cout<<"game list: "<<feedback<<endl;
+
 }
 
 RemoteGameFlow::~RemoteGameFlow() {

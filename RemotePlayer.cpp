@@ -5,6 +5,7 @@
 #include <map>
 #include <unistd.h>
 #include <cstring>
+#include <cstdlib>
 #include "RemotePlayer.h"
 #include "ConsoleLogic.h"
 #include "Client.h"
@@ -27,7 +28,7 @@ Point RemotePlayer::makeMove(vector<Point> possibleMoves , Board &b) {
     }
     if(strcmp(buff,"exit")== 0){
         cout<<"server is close"<<endl;
-        return Point(-1,-1);
+        exit(0);
     }
     int row = buff[0];
     int col = buff[1];
